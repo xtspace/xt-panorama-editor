@@ -1,0 +1,14 @@
+stages:
+  - main
+dev:
+  stage: main
+  tags:
+    - builder
+  only:
+    - main
+  script:
+    - pnpm i
+    - pnpm build
+    - rm -r E:\2024\xt-panorama\frontend
+    - mkdir E:\2024\xt-panorama\frontend
+    - cp -r dist/* E:\2024\xt-panorama\frontend

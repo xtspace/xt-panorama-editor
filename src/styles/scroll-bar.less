@@ -1,0 +1,27 @@
+.scroll-bar-none{
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.scroll-bar() {
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    /*滚动条里面小方块*/
+    border-radius: 2px;
+    background: #ffffff1A;
+  }
+
+  &::-webkit-scrollbar-track {
+    /*滚动条里面轨道*/
+    border-radius: 2px;
+    background: transparent;
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
