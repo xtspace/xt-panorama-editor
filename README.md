@@ -8,11 +8,11 @@
 - `React` 18.2.0
 - `Typescript` 5.2.2
 
-#### 运行环境
+### 运行环境
 - `node` >= 16.x.x
 - `pnpm` >= 7.18.2
 
-#### 本地运行
+### 本地运行
 ```
 git clone https://github.com/xtspace/xt-panorama-editor.git
 cd xt-panorama-editor
@@ -20,7 +20,7 @@ pnpm i
 pnpm start
 ```
 
-####  功能概述
+###  功能概述
 
 - **离线部署**
 - **全景图自动分片**：支持将全景图自动分片成立方体图或多层级瓦片图，以提高加载速度和性能。
@@ -31,9 +31,9 @@ pnpm start
 - **全景管理**：提供全景图的管理功能，包括创建新的全景项目、编辑现有全景项目、导出项目等。
 
 
-#### 页面展示
-![alt text](image.png)
-![alt text](image-1.png)
+### 页面展示
+![image](https://github.com/xtspace/xt-panorama-editor/assets/65204427/85d61150-1653-436c-87b6-dee4889ddb33)
+![image-1](https://github.com/xtspace/xt-panorama-editor/assets/65204427/dbb775df-531b-4e3b-a22d-0edc7a1d0d29)
 
-#### 联系方式
-![test](./QR.jpg)
+### 联系方式
+![QR](https://github.com/xtspace/xt-panorama-editor/assets/65204427/ac9844b6-acca-4211-9cdd-087d6f7049e4)
