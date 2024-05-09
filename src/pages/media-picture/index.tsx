@@ -42,7 +42,8 @@ export default function MediaPicture() {
             title: '操作',
             render: (_: string, record: IMaterial) => (
                 <>
-                    <a className='cursor-pointer' onClick={async () => {
+                    <a className='cursor-pointer' onClick={async (e) => {
+                        e.stopPropagation()
                         if (!record.id) return
                         const res = await deleteMaterial(record.id)
                         if (res.data.code !== CodeEnum.SUCCESS) return message.error("删除失败")

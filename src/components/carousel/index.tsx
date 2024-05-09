@@ -1,7 +1,6 @@
 import React from 'react';
 import iconClose from "@/assets/close.png"
 import { isMobile } from 'react-device-detect';
-import { IHotSpot } from '@/mock/data'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual, Navigation } from 'swiper/modules';
 
@@ -13,9 +12,10 @@ import 'swiper/css/scrollbar';
 import 'swiper/css/autoplay';
 import s from './index.module.less';
 import { loadAssets } from '@/utils/common';
+import { IHotSpot } from '@/api/pano';
 interface CarouselProps {
     imgList: IHotSpot[]
-    currentData: IHotSpot
+    currentData?: IHotSpot
     setIsShow: React.Dispatch<React.SetStateAction<boolean>>
 }
 
@@ -24,7 +24,7 @@ const M_BOTTOM = 60
 
 export default function Carousel(props: CarouselProps) {
     const { setIsShow, imgList, currentData } = props
-    const initialSlide = imgList?.findIndex(d => d?.name?.includes(currentData.id!))
+    const initialSlide = imgList?.findIndex(d => d?.id?.includes(currentData?.id || ''))
 
 
     const onLoad = (evt: React.MouseEvent<HTMLImageElement>) => {

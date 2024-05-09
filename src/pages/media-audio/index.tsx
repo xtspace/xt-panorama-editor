@@ -50,14 +50,16 @@ export default function MediaAudio() {
                 <>
                     {
                         !record.directory &&
-                        <a className='mr-10 cursor-pointer' onClick={() => {
+                        <a className='mr-10 cursor-pointer' onClick={(e) => {
+                            e.stopPropagation()
                             setPreviewFile({ ...setPreviewFile, name: record.name, url: record?.url })
                             setIsPlayingAudio(true)
                         }}>
                             预览
                         </a>
                     }
-                    <a className='cursor-pointer' onClick={async () => {
+                    <a className='cursor-pointer' onClick={async (e) => {
+                        e.stopPropagation()
                         if (!record.id) return
                         const res = await deleteMaterial(record.id)
                         res.data.code !== CodeEnum.SUCCESS && message.error("删除失败")

@@ -27,7 +27,8 @@ export interface IFileInfo {
     url: string,
     name: string,
     response?: any,
-    realFileName?: string
+    realFileName?: string,
+    materialId?: string
 }
 
 export interface IPanoFile {

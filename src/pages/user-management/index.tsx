@@ -30,7 +30,7 @@ export default function UserManagement() {
         const res = modelTitle === '新增' ? await addUserInfoApi(paramData) : await setUserInfoApi(paramData)
         if (res.data.code === CodeEnum.SUCCESS) {
           message.success(`${modelTitle === '新增' ? '添加' : '修改'}成功`)
-          setRequestParams({ ...requestParams })
+          setRequestParams(requestParams)
         }
         setIsEditUser(false)
       })
@@ -46,7 +46,7 @@ export default function UserManagement() {
       if (!editUser?.id) return
       const res = await deleteUserApi(editUser?.id)
       if (res.data.code !== CodeEnum.SUCCESS) return message.error("删除失败")
-      setRequestParams({ ...requestParams })
+      setRequestParams(requestParams)
       setConfirmModal(false)
     }
 
@@ -74,10 +74,10 @@ export default function UserManagement() {
                 allowClear={true}
                 options={roleOptions}
                 onChange={(val) => {
-                  setRequestParams({ ...requestParams, current: 1, roleId: val })
+                  setRequestParams({ current: 1, roleId: val })
                 }}
                 onClear={() => {
-                  setRequestParams({ ...requestParams, current: 1, roleId: undefined })
+                  setRequestParams({ current: 1, roleId: undefined })
                 }}
               />
             </div>
@@ -112,7 +112,10 @@ export default function UserManagement() {
                 },
                 {
                     title: '创建时间',
-                    dataIndex: 'createTime'
+                    dataIndex: 'createTime',
+                    defaultSortOrder: 'ascend',
+                    showSorterTooltip: false,
+                    sorter: (a, b) => new Date(a.createTime).getTime() - new Date(b.createTime).getTime(),
                 },
                 {
                     title: '操作',
