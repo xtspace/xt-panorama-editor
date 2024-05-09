@@ -9,7 +9,10 @@ import MediaAudio from '@/pages/media-audio'
 import Login from "@/pages/login";
 import UserManagement from "@/pages/user-management";
 import { getStorage } from '@/utils/storage';
+import KeepAlive from 'react-activation';
 import { NotFound } from "@/pages/404";
+
+
 
 export const RouterContainer = () => {
     const routes = [
@@ -23,23 +26,23 @@ export const RouterContainer = () => {
             children: [
                 {
                     path: "/tour",
-                    element: <Tour />
+                    element: <KeepAlive name='tour' cacheKey="UNIQUE_ID1"><Tour /></KeepAlive>
                 },
                 {
                     path: "/tour/picture",
-                    element: <MediaPicture />
+                    element: <KeepAlive name='picture' cacheKey="UNIQUE_ID2"><MediaPicture /></KeepAlive>
                 },
                 {
                     path: "/tour/video",
-                    element: <MediaVideo />
+                    element: <KeepAlive name='video' cacheKey="UNIQUE_ID3"><MediaVideo /></KeepAlive>
                 },
                 {
                     path: "/tour/panorama",
-                    element: <MediaPanorama />
+                    element: <KeepAlive name='panorama' cacheKey="UNIQUE_ID4"><MediaPanorama /></KeepAlive>
                 },
                 {
                     path: "/tour/audio",
-                    element: <MediaAudio />
+                    element: <KeepAlive name='audio' cacheKey="UNIQUE_ID4"><MediaAudio /></KeepAlive>
                 },
             ]
         }, {

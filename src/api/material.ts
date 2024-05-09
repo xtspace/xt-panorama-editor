@@ -1,4 +1,4 @@
-import { UploadTypeEnum } from "@/enum/upload";
+import { UploadSliceEnum, UploadTypeEnum } from "@/enum/upload";
 import { request, AjaxResponse } from "@/utils/request";
 
 export interface IMaterialData{
@@ -14,7 +14,7 @@ export interface IMaterial {
     url?:string
     type:UploadTypeEnum
     parentId?:string
-    panoType?:number
+    panoType?:number | UploadSliceEnum
 }
 
 export interface IMaterialProps{

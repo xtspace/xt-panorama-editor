@@ -28,6 +28,7 @@ export default function MaterialModel(props: IProps) {
     const [addTableData, setAddTableData] = useState<IMaterial[]>([]);
     const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
 
+
     const resetFolderList = (id:string) => {
         if (folderList.length <= 0) return
         const nowFolderIndex = folderList.findIndex((item) => item?.id === id)
@@ -45,13 +46,17 @@ export default function MaterialModel(props: IProps) {
     };
 
     const onClickSelectRow = (row: IMaterial) => {
-        if (row.type === UploadTypeEnum.PANORAMA && getPanoData()?.scenes.find(panoItem => panoItem.id === row.fileId)) return
+        if (panoIsUse(row)) return
         setAddKey(produce(draft => {
             return addKey.find(d => d === row.id) ? draft.filter(d => d !== row.id) : concat(draft, row.id)
         }))
         setAddTableData(produce(draft => {
             return addKey.find(d => d === row.id) ? draft.filter(d => d.id !== row.id) : concat(draft, [row])
         }))
+    }
+
+    const panoIsUse = (row: IMaterial) => {
+        return row.type === UploadTypeEnum.PANORAMA && (getPanoData()?.scenes.find(panoItem => panoItem.id === row.fileId) && !location.href.includes('task'))
     }
 
     const loadPreviewUrl = (id: string | undefined, type: number, url: string | undefined) => {
@@ -74,7 +79,7 @@ export default function MaterialModel(props: IProps) {
             setAddTableData(selectedRows)
         },
         getCheckboxProps: (record: any) => ({
-            disabled: record.directory || (record.type === UploadTypeEnum.PANORAMA && getPanoData()?.scenes.find(panoItem => panoItem.id === record.fileId))
+            disabled: record.directory || panoIsUse(record)
         }),
     }
 

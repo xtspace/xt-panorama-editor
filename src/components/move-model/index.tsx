@@ -13,27 +13,33 @@ interface MoveProps {
   materialType: UploadTypeEnum,
   setToId: (id: string) => void
 }
+interface FolderData {
+  id: string
+  name: string
+}
 
 export default function MoveModel(props: MoveProps) {
   const { moveList, materialType, setToId } = props
-  const [tableData, , requestParams, setRequestParams] = useAddMaterial(materialType)
-  const [folderId, setFolderId] = useState('0')
-  const [folderList, setFolderList] = useState([])
+  const [tableData, , , setRequestParams] = useAddMaterial(materialType)
+  const [folderId, setFolderId] = useState<string>('0')
+  const [folderList, setFolderList] = useState<FolderData[]>([])
   const onDoubleClickFn = onDoubleClick();
-  const [selectToId, setSelectToId] = useState('0')
+  const [selectToId, setSelectToId] = useState<string>('0')
 
   const resetFolderList = (id:string) => {
     setFolderId(id);
-    const nowFolderIndex = folderList.findIndex((item:any) => item?.id === id)
+    const nowFolderIndex = folderList.findIndex((item:FolderData) => item?.id === id)
     id === '0' ? setFolderList([]) : setFolderList(folderList.slice(0, nowFolderIndex + 1))
   }
 
-  const onClickFolder = (row: any) => {
+  const onClickFolder = (row: IMaterial) => {
+    if (!row.id) return
     setToId(row.id)
     setSelectToId(row.id)
   };
 
-  const onDoubleClickFolder = (row: any) => {
+  const onDoubleClickFolder = (row: IMaterial) => {
+    if (!row.id) return
     setToId(row.id)
     setFolderId(row?.id)
     setSelectToId('0')
@@ -49,7 +55,7 @@ export default function MoveModel(props: MoveProps) {
   useEffect(() => {
       setSelectToId('0')
       setToId('0')
-      setRequestParams({ ...requestParams, parentId: folderId })
+      setRequestParams({ parentId: folderId })
   }, [folderId])
 
   return <>
