@@ -6,7 +6,7 @@ import { UploadTypeEnum } from '@/enum/upload';
 import { CodeEnum } from '@/enum/code';
 import { produce } from 'immer';
 import ModelUpload from '@/components/model-upload/index.model';
-import './index.module.less'
+import s from './index.module.less'
 import CatalogueModel from '@/components/catalogue-folder';
 import MoveModel from '@/components/move-model'
 import { useEffect, useImperativeHandle, useState } from 'react';
@@ -15,11 +15,12 @@ import useAddMaterial from '@/hooks/useAddMaterial';
 import { cloneDeep, concat } from 'lodash-es';
 import { IFileInfo, IPanoFile } from '@/api/upload';
 import { ColumnsType } from 'antd/es/table';
+import { UploadPano } from '../upload-pano';
 import { panoStart } from '@/api/pano';
 
 interface IProps {
     materialType: UploadTypeEnum
-    tableColumns: ColumnsType<IMaterial> | undefined
+    tableColumns?: ColumnsType<IMaterial>
     fileAccept?: string
     btnTitle: string
     onRef: any
@@ -48,7 +49,7 @@ export default function MaterialTable(props: IProps) {
         name: string
     }[]>([]);
 
-    const [moveData, setMoveData] = useState<IMaterialData['records'][0][]>([]);
+    const [moveData, setMoveData] = useState<IMaterial[]>([]);
 
     const [moveToId, setMoveToId] = useState<string>('0')
 
@@ -61,20 +62,14 @@ export default function MaterialTable(props: IProps) {
     const uploadCallback = async (data: IFileInfo[]) => {
         const res = await Promise.allSettled(data.map(d => addMaterial({ type: materialType, fileId: d.id, name: d.realFileName, parentId: folderId })))
         res?.map(d => {
-            if (d.status === "fulfilled" && d.value.data.code === CodeEnum.SUCCESS) {
-                setRequestParams(requestParams)
-                return
-            }
+            if (d.status === "fulfilled" && d.value.data.code === CodeEnum.SUCCESS) return setRequestParams(requestParams)
         })
     }
 
     const uploadPanoCallback = async (data: IPanoFile, fileCount: { total: number, now: number }) => {
         await panoStart(data.fileId)
         await addMaterial({ type: materialType, fileId: data.fileId, name: data.name, parentId: folderId, panoType: data.type })
-        if (fileCount.total === fileCount.now) {
-            setLoading(false)
-            setRequestParams(requestParams)
-        }
+        fileCount.total === fileCount.now && setLoading(false), setRequestParams(requestParams)
     }
 
     const onClickAddFolder = async () => {
@@ -109,9 +104,9 @@ export default function MaterialTable(props: IProps) {
         }))
     }
 
-    const resetFolderList = (id: string) => {
+    const resetFolderList = (id:string) => {
         if (folderList.length <= 0) return
-        const nowFolderIndex = folderList.findIndex((item: any) => item?.id === id)
+        const nowFolderIndex = folderList.findIndex((item:any) => item?.id === id)
         id === '0' ? setFolderList([]) : setFolderList(folderList.slice(0, nowFolderIndex + 1))
     }
 
@@ -126,7 +121,7 @@ export default function MaterialTable(props: IProps) {
 
     const updatePosition = async () => {
         const _moveList = cloneDeep(moveData)
-        _moveList?.map((listItem: any) => {
+        _moveList?.map((listItem:any) => {
             listItem.parentId = moveToId
         })
         const res = await updateMultiMaterial(_moveList)
@@ -169,6 +164,18 @@ export default function MaterialTable(props: IProps) {
                     <Button type='primary' className='mr-10' onClick={() => setIsAddFolder(true)}>
                         <FolderAddOutlined />添加文件夹
                     </Button>
+                    {
+                        btnTitle === '全景' ? <UploadPano<any>
+                            id='panoramicmaterial'
+                            onload={() => {setLoading(true)}}
+                            onpregress={() => {}}
+                            onSucess={uploadPanoCallback}
+                            btnText='上传全景'
+                            taskUpload={() => {}}
+                        /> : <Button type='primary' onClick={setTrue}>
+                            <PlusOutlined />上传{btnTitle}
+                        </Button>
+                    }
                 </div>
             </div>
 
@@ -176,7 +183,7 @@ export default function MaterialTable(props: IProps) {
 
             <Table
                 rowKey="id"
-                className='mt-20'
+                className={s["material-table"].c('mt-20')}
                 rowSelection={rowSelection}
                 columns={tableColumns}
                 dataSource={tableData.list}
@@ -198,7 +205,7 @@ export default function MaterialTable(props: IProps) {
                         }
                     };
                 }}
-                locale={{ emptyText: '暂无数据' }}
+                locale={{emptyText: '暂无数据'}}
             />
         </Spin>
 

@@ -9,6 +9,8 @@ import { removeStorage } from "@/utils/storage";
 import { STORAGE } from "@/enum/storage";
 import { UserOutlined } from "@ant-design/icons";
 import { getStorage } from '@/utils/storage';
+import { AliveScope } from 'react-activation';
+
 
 const { Content, Sider } = Layout;
 
@@ -33,39 +35,41 @@ export default function BasicLayout() {
 
 
     return <Layout className={s["layout"]}>
-        <Layout>
-            <Sider width={200}>
-                <div className='flex-center'>
-                    <img src={logo} />
-                    <p>全景编辑器</p>
-                </div>
-                <Menu />
-            </Sider>
+        <AliveScope>
             <Layout>
-                <Header className="flex flex-justify-end flex-content-center" style={{
-                    background: "#fff"
-                }} >
-                    <div>
-                        <Dropdown menu={{ items, onClick }} >
-                            <div>
-                                <Avatar size={34} icon={<UserOutlined />} />
-                                <span className="ml-10">{ username }</span>
-                            </div>
-                        </Dropdown>
+                <Sider width={200}>
+                    <div className='flex-center'>
+                        <img src={logo} />
+                        <p>全景编辑器</p>
                     </div>
-                </Header>
-                <Content
-                    style={{
-                        padding: 16,
-                        margin: 16,
-                        borderRadius: 4,
-                        background: "#fff",
-                        maxHeight: "97vh"
-                    }}
-                >
-                    <Outlet />
-                </Content>
+                    <Menu />
+                </Sider>
+                <Layout>
+                    <Header className="flex flex-justify-end flex-content-center" style={{
+                        background: "#fff"
+                    }} >
+                        <div>
+                            <Dropdown menu={{ items, onClick }} >
+                                <div>
+                                    <Avatar size={34} icon={<UserOutlined />} />
+                                    <span className="ml-10">{ username }</span>
+                                </div>
+                            </Dropdown>
+                        </div>
+                    </Header>
+                    <Content
+                        style={{
+                            padding: 16,
+                            margin: 16,
+                            borderRadius: 4,
+                            background: "#fff",
+                            maxHeight: "97vh"
+                        }}
+                    >
+                        <Outlet />
+                    </Content>
+                </Layout>
             </Layout>
-        </Layout>
+        </AliveScope>
     </Layout>
 }

@@ -1,0 +1,135 @@
+.editor-page {
+    :global{
+        #pano{
+            width: 100%;
+        }
+    }
+    .size(100vw, 100vh);
+    background-color: #1A1A1A;
+    box-sizing: border-box;
+    font-size: 14px;
+
+    .left {
+        padding: 6px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+        background: #282828;
+    }
+
+    .item {
+        border-radius: 4px;
+        padding: 8px 4px;
+        cursor: pointer;
+        font-size: 12px;
+
+        &:hover {
+            background: #282828;
+        }
+
+        img {
+            .size(32px, 32px)
+        }
+    }
+
+    .active {
+        background-color: #1677FF !important;
+    }
+
+    .content {
+
+        .top{
+            height: 75vh;
+            border-radius: 4px;
+            overflow: hidden;
+
+            .view-frame{
+                position: absolute;
+                pointer-events: none;
+                img{
+                    .size(50%, 20%)
+                }
+                >button{
+                    pointer-events: auto;
+                    position: absolute;
+                    bottom: 30px;
+                }
+            }
+        }
+
+        .bottom{
+            background-color: #282828;
+            border-radius: 4px;
+            padding: 8px;
+            height: calc(100vh - 75vh - 100px);
+            width: calc(100vw - 100px - 260px);
+
+            >div{
+                overflow-x: auto;
+                overflow-y: hidden;
+                .scroll-bar;
+
+                >div:first-child{
+                    display: grid;
+                    grid-template-columns: repeat(40,80px);
+                    grid-gap: 8px;
+                }
+            }
+
+            .action-box{
+                background-color: rgba(0, 0, 0, .5);
+                padding: 0 4px;
+                border-radius: 4px;
+            }
+            
+            .scene-item{
+                 border-radius: 8px;
+                 box-sizing: border-box;
+                 position: relative;
+                 display: inline-block;
+                 overflow: hidden;
+                 cursor: pointer;
+                 .size(80px, 80px);
+
+                >img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+                &:has(.pregress-box){
+                    width: 80px;
+                    height: 80px;
+                    background-color: rgba(0, 0, 0, .5);
+
+                    .pregress-box{
+                        position: absolute;
+                        top: 41%;
+                        width: 100%;
+                        text-align: center;
+                    }
+                }
+                div:last-child{
+                    position: absolute;
+                    bottom: 0;
+                    font-size: 12px;
+                    text-align: center;
+                    height: 17px;
+                    width: 100%;
+                    background-color: rgba(0, 0, 0, .5);
+                    color: #fff;
+                }
+            }
+            .active{
+                border: 2px solid @antd-theme;
+            }
+        }
+    }
+
+    .config-panel {
+        width: 260px;
+        background-color: #282828;
+        border-radius: 4px;
+        overflow: auto;
+        padding: 10px;
+        .scroll-bar-none;
+    }
+}

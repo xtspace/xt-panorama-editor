@@ -1,0 +1,60 @@
+.task-page{
+    background: #000;
+    .size(100vw, 100vh);
+    padding: 16px;
+    box-sizing: border-box;
+
+    :global{
+        .ant-btn-primary:disabled{
+                background: #d9d9d9;
+        }
+        .ant-btn-text,.ant-btn-text:hover{
+            color: @antd-theme !important;
+        }
+    }
+    >div{
+        padding: 16px;
+        background:#282828;
+        border-radius: 4px;
+        box-sizing: border-box;
+
+    }
+    .left{
+        width: 80%;
+
+        .content{
+            .size(100%, 95%);
+            overflow: auto;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            grid-gap: 10px;
+                .item{
+                    img, >div:first-child{
+                        .size(60px, 60px);
+                        margin-right: 6px;
+                        background: #282828;
+                    }
+                    height: 90px;
+                    color: #fff;
+                    background: #343434;
+                    border-radius: 8px;
+                    padding: 16px;
+                    box-sizing: border-box;
+
+                    svg{
+                        cursor: pointer;
+                    }
+                }
+        }
+    }
+
+    .right{
+        width: 19%;
+        text-align: center;
+    }
+
+    .editor-container{
+        .size(100%, 100%);
+        color: #fff;
+    }
+}

@@ -5,7 +5,13 @@ import { UploadSliceEnum } from "@/enum/upload";
 import { IconMarkerEnum, IconTypeEnum } from "@/enum/hotspot";
 
 
-export function getPanoList(params: { keyword?: string, current: number, size: number }): AjaxResponse<IPanoData> {
+export interface IPanoParams {
+    keyword?: string
+    current?: number
+    size?: number
+}
+
+export function getPanoList(params: IPanoParams): AjaxResponse<IPanoData> {
     return request.get('/pano/page', { params })
 }
 
@@ -68,6 +74,7 @@ interface IPanoProps {
     fileIds: string[]
     projectId: string
     title: string
+    scenes: IPanoSceneData[]
 }
 
 
@@ -82,7 +89,7 @@ export interface IPanoItem {
 }
 
 export interface IHotSpotIcon {
-    url?: string,
+    url?: string | undefined,
     ath: number,
     atv: number,
     oy?: number,
@@ -101,6 +108,7 @@ export interface IHotSpot {
     iconType: `${IconTypeEnum}`,
     textType: `${IconMarkerEnum}`
     audios?: Array<IFileInfo>
+    content?: string
 }
 
 
@@ -113,7 +121,7 @@ export interface IPanoSceneData {
         vlookAt: number,
         fov: number,
     },
-    pano:IPanoItem,
+    pano?:IPanoItem,
     urls?:Array<string>
     hotspot: Array<IHotSpot>
 }

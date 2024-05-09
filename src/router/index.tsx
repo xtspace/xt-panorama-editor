@@ -6,10 +6,18 @@ import MediaPicture from '@/pages/media-picture'
 import MediaVideo from '@/pages/media-video'
 import MediaPanorama from '@/pages/media-panorama'
 import MediaAudio from '@/pages/media-audio'
+import Task from '@/pages/task'
+import Preview from '@/pages/preview'
+import Editor from '@/pages/editor'
+import EditorBasic from '@/pages/editor-basic'
+import EditorView from '@/pages/editor-view'
+import EditorHotspot from "@/pages/editor-hotspot";
 import Login from "@/pages/login";
 import UserManagement from "@/pages/user-management";
 import { getStorage } from '@/utils/storage';
-import { NotFound } from "@/pages/404";
+import KeepAlive from 'react-activation';
+
+
 
 export const RouterContainer = () => {
     const routes = [
@@ -23,29 +31,53 @@ export const RouterContainer = () => {
             children: [
                 {
                     path: "/tour",
-                    element: <Tour />
+                    element: <KeepAlive name='tour' cacheKey="UNIQUE_ID1"><Tour /></KeepAlive>
                 },
                 {
                     path: "/tour/picture",
-                    element: <MediaPicture />
+                    element: <KeepAlive name='picture' cacheKey="UNIQUE_ID2"><MediaPicture /></KeepAlive>
                 },
                 {
                     path: "/tour/video",
-                    element: <MediaVideo />
+                    element: <KeepAlive name='video' cacheKey="UNIQUE_ID3"><MediaVideo /></KeepAlive>
                 },
                 {
                     path: "/tour/panorama",
-                    element: <MediaPanorama />
+                    element: <KeepAlive name='panorama' cacheKey="UNIQUE_ID4"><MediaPanorama /></KeepAlive>
                 },
                 {
                     path: "/tour/audio",
-                    element: <MediaAudio />
+                    element: <KeepAlive name='audio' cacheKey="UNIQUE_ID4"><MediaAudio /></KeepAlive>
                 },
             ]
-        }, {
-            path: "*",
-            element: <NotFound />
-        }
+        },
+        {
+            path: "/task",
+            element: <Task />
+        },
+        {
+            path: "/preview/:fileId?",
+            element: <Preview />
+        },
+        {
+            path: "/editor",
+            element: <Editor />,
+            children: [
+                {
+                    path: "basic/:fileId",
+                    element: <EditorBasic />
+                },
+                {
+                    path: "view/:fileId",
+                    element: <EditorView />
+                },
+
+                {
+                    path: "hotspot/:fileId",
+                    element: <EditorHotspot />
+                }
+            ]
+        },
     ]
     if (getStorage('USER_ROLE')?.includes('admin') && !routes[1].children?.find(routeItem => routeItem.path === '/tour/user')) {
         routes[1].children?.push({

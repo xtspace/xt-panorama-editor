@@ -1,0 +1,46 @@
+.icon-item{
+   border-radius: 4px;
+    background: #000;
+    border:2px solid transparent;
+    cursor: pointer;
+}
+
+.img-outerbox{
+    >div:first-child{
+        background: #1A1A1A;
+        border-radius: 8px;
+        overflow: auto;
+        .scroll-bar;
+
+        >div{
+            display: inline-block;
+            position: relative;
+            color: #fff;
+            img:not(:nth-child(-n+3)){
+                margin-top: 0px;
+            }
+        }
+    }
+
+}
+
+.hotspot-item{
+    border-radius: 8px;
+    height: 35px;
+    background: #1A1A1A;
+    cursor: pointer;
+
+    >div>div{
+        background-size: 100%;
+    }
+}
+
+.active{
+    border-color: @antd-theme;
+}
+
+.hotspot-outerbox{
+    height: calc(100vh - 150px);
+    overflow: auto;
+    .scroll-bar();
+}

@@ -56,10 +56,11 @@ export default function MediaPanorama() {
             title: '操作',
             render: (_: string, record: IMaterial) => (
                 <>
-                    <a className='cursor-pointer' onClick={async () => {
+                    <a className='cursor-pointer' onClick={async (e) => {
+                        e.stopPropagation()
                         if (!record.id) return
                         const res = await deleteMaterial(record.id)
-                        if (res.data.code !== CodeEnum.SUCCESS) return message.error("素材已被使用无法删除！")
+                        if (res.data.code !== CodeEnum.SUCCESS) return message.error(record.directory ? res.data.message : "素材已被使用无法删除！")
                         materialRef.current.reloadData()
                     }}>删除</a>
                 </>

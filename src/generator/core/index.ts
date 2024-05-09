@@ -1,5 +1,7 @@
 import { IPanoDetailData } from "@/api/pano";
 import { FlattenFile } from "@/types/generator/file";
+import { offlineStore } from '@/utils/offline-store';
+
 
 export const enum ProcessEnum {
     RUN = "run",
@@ -13,6 +15,7 @@ const { log } = console
 const isDev = import.meta.env.DEV;
 
 const DEFAULT_WORKER_JS = isDev ? "./worker.ts" : "./static/js/generator-worker.js";
+
 
 
 export async function generateCore(data: IPanoDetailData, panoId: string): Promise<FlattenFile> {
@@ -31,19 +34,22 @@ export async function generateCore(data: IPanoDetailData, panoId: string): Promi
 
 
         worker.onmessage = function (event: MessageEvent) {
-            const { type, result } = event.data
-
+            const { type, result, panoId } = event.data
+            const downId = offlineStore.getOfflineData()
             switch (type) {
                 case ProcessEnum.START:
                     log('开始下载');
+                    offlineStore.setOfflineData([...downId, panoId])
                     break;
                 case ProcessEnum.END:
                     log('下载完成');
+                    offlineStore.setOfflineData(downId.filter(d => d !== panoId))
                     resolve(result)
                     worker.terminate();
                     break
                 case ProcessEnum.ERROR:
                     log('下载失败');
+                    offlineStore.setOfflineData(downId.filter(d => d !== panoId))
                     resolve(result)
                     break
             }
@@ -74,4 +80,3 @@ async function loadWorkerJs(workerJsUrl: string) {
 
     return workerJs;
 }
-
