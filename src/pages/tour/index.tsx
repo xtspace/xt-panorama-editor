@@ -15,10 +15,10 @@ import { panoStore } from '@/utils/pano-store';
 import { generateProjectZip } from '@/generator/download/zip';
 import QRCode from 'qrcode.react';
 
-interface PageData{
-    total:number
-    size:number
-    current:number
+interface PageData {
+    total: number
+    size: number
+    current: number
 }
 export default function Tour() {
 
@@ -32,13 +32,13 @@ export default function Tour() {
         title: string;
     }>();
     const saveRef = useRef<HTMLAnchorElement>(null);
-    const [downloadId, setDownloadId] = useState<{ id:string, state:string }[]>([]);
-    const [pageData, setPageData] =useState<PageData>({
+    const [downloadId, setDownloadId] = useState<{ id: string, state: string }[]>([]);
+    const [pageData, setPageData] = useState<PageData>({
         total: 0,
         size: 8,
         current: 1,
     });
-    const [searchInput, setSearchInput] =useState('');
+    const [searchInput, setSearchInput] = useState('');
 
     const { run } = useRequest(getPanoList, {
         defaultParams: [{
@@ -95,9 +95,9 @@ export default function Tour() {
         })
         setDownloadId([...downloadId])
     }
-    
+
     useEffect(() => {
-        const list:{ id:string, state:string }[] = []
+        const list: { id: string, state: string }[] = []
         panoList.map(panoItem => {
             if (!downloadId.find(d => panoItem.id === d.id)) {
                 list.push({ id: panoItem.id, state: '离线下载' })
@@ -140,17 +140,6 @@ export default function Tour() {
                         setShareUrl(`${location.origin}/#/preview/${record.id}`)
                         setShareModal(true)
                     }}>分享链接</a>
-                    {
-                        <a className='ml-10 cursor-pointer' onClick={async () => {
-                            if (downloadId?.find(d => d.id === record.id)?.state === '下载中') return
-                            controlState(record.id, '下载中')
-                            const data = await panoStore.requestData(record.id);
-                            const files = await generateCore(data, record.id);
-                            controlState(record.id, '离线下载')
-                            if (!files) return message.error(record.title + '下载失败')
-                            await generateProjectZip(files);
-                        }}>{ downloadId?.find(d => d.id === record.id)?.state }</a>
-                    }
                 </>
             ),
         }
@@ -180,7 +169,7 @@ export default function Tour() {
                     pageSize: pageData?.size,
                     total: pageData?.total,
                     onChange: (current, size) => {
-                        run({ ...pageData, keyword: searchInput, current, size  })
+                        run({ ...pageData, keyword: searchInput, current, size })
                     }
                 }}
             />
