@@ -4,72 +4,41 @@ import type { ColumnsType } from 'antd/es/table';
 import copy from "copy-to-clipboard";
 import SearchInput from '@/components/search-input';
 import { Link, useNavigate } from 'react-router-dom';
-import { useRequest } from 'ahooks';
-import { deletePano, getPanoList, IPanoData } from '@/api/pano';
-import { useEffect, useRef, useState } from 'react';
-import { produce } from 'immer';
+import { deletePano, IPanoData } from '@/api/pano';
+import { useRef, useState, useSyncExternalStore } from 'react';
 import { CodeEnum } from '@/enum/code';
 import { MenuEnum } from '../editor/menu.config';
 import { generateCore } from '@/generator';
 import { panoStore } from '@/utils/pano-store';
 import { generateProjectZip } from '@/generator/download/zip';
 import QRCode from 'qrcode.react';
+import usePano from '@/hooks/usePano';
+import { offlineStore } from '@/utils/offline-store';
 
-interface PageData {
-    total: number
-    size: number
-    current: number
-}
+
+
 export default function Tour() {
-
     const navigate = useNavigate();
-    const [panoList, setPanoList] = useState<IPanoData["records"]>([]);
-    const [confirmModal, setConfirmModal] = useState(false);
-    const [shareModal, setShareModal] = useState(false);
-    const [shareUrl, setShareUrl] = useState('');
+    const [tableData, , requestParams, setRequestParams] = usePano()
+    const [confirmModal, setConfirmModal] = useState<boolean>(false);
+    const [shareModal, setShareModal] = useState<boolean>(false);
+    const [shareUrl, setShareUrl] = useState<string>('');
     const [delPano, setDelPano] = useState<{
         id: string;
         title: string;
     }>();
     const saveRef = useRef<HTMLAnchorElement>(null);
-    const [downloadId, setDownloadId] = useState<{ id: string, state: string }[]>([]);
-    const [pageData, setPageData] = useState<PageData>({
-        total: 0,
-        size: 8,
-        current: 1,
-    });
-    const [searchInput, setSearchInput] = useState('');
+    const offlineData = useSyncExternalStore(offlineStore.subscribe, () => offlineStore.getOfflineData())
 
-    const { run } = useRequest(getPanoList, {
-        defaultParams: [{
-            size: 8,
-            current: 1,
-            keyword: ''
-        }],
-        onSuccess: (data) => {
-            setPanoList(data?.data?.result?.records || []);
-            setPageData({
-                total: data?.data?.result?.total,
-                size: data?.data?.result?.size,
-                current: data?.data?.result?.current,
-            })
-        }
-    });
+
 
 
 
     const handleDelete = async (id: string) => {
         const res = await deletePano(id);
-        res.data.code === CodeEnum.SUCCESS ?
-            setPanoList(produce(panoList, draft => {
-                return draft.filter(d => d.id !== id);
-            })) : message.error("删除失败");
+        res.data.code !== CodeEnum.SUCCESS && message.error("删除失败");
         setConfirmModal(false)
-        run({
-            size: 8,
-            current: 1,
-            keyword: searchInput
-        })
+        setRequestParams(requestParams)
     };
 
     const confirmDel = () => {
@@ -86,25 +55,7 @@ export default function Tour() {
         saveRef.current.download = '二维码';
     };
 
-    const controlState = (id: string, state: string) => {
-        downloadId.map(d => {
-            if (d.id === id) {
-                d.state = state
-                return
-            }
-        })
-        setDownloadId([...downloadId])
-    }
 
-    useEffect(() => {
-        const list: { id: string, state: string }[] = []
-        panoList.map(panoItem => {
-            if (!downloadId.find(d => panoItem.id === d.id)) {
-                list.push({ id: panoItem.id, state: '离线下载' })
-            }
-        })
-        setDownloadId([...downloadId, ...list])
-    }, [panoList])
 
     const columns: ColumnsType<IPanoData["records"][0]> = [
         {
@@ -150,8 +101,7 @@ export default function Tour() {
             <div className='flex justify-between'>
                 <SearchInput
                     onFinish={(val) => {
-                        setSearchInput(val.keyword)
-                        run({ current: pageData?.current, size: pageData?.size, keyword: val.keyword })
+                        setRequestParams({ ...val })
                     }}
                 />
                 <Button type='primary' onClick={() => navigate('/task')}>
@@ -163,13 +113,14 @@ export default function Tour() {
                 rowKey="id"
                 className='mt-20'
                 columns={columns}
-                dataSource={panoList}
+                dataSource={tableData.list}
                 locale={{ emptyText: '暂无数据' }}
                 pagination={{
-                    pageSize: pageData?.size,
-                    total: pageData?.total,
+                    pageSize: requestParams.size,
+                    current: requestParams.current,
+                    total: tableData.total,
                     onChange: (current, size) => {
-                        run({ ...pageData, keyword: searchInput, current, size })
+                        setRequestParams({ current, size })
                     }
                 }}
             />

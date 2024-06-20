@@ -29,10 +29,12 @@
     "qrcode.react": "^3.1.0",
     "rc-viewer": "^0.0.9",
     "react": "^18.2.0",
+    "react-activation": "^0.12.4",
     "react-beautiful-dnd": "^13.1.1",
     "react-device-detect": "^2.2.3",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
+    "react-vcode": "^1.0.11",
     "rxjs": "^7.8.1",
     "swiper": "^11.0.7"
   },

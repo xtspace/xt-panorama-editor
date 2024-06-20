@@ -57,10 +57,10 @@ class Builder {
             }
             urls.push(`/api/file/download/zip?panoId=${panoId}`)
 
-            await asyncPool<ResultFile>(50, urls, async (item: any) => {
+            await asyncPool<ResultFile>(50, urls, async (item) => {
                 const res = await builders.resource(await item)
                 if (item.includes('/api/file/download/zip?panoId=')) {
-                    res.map((resItem: any) => {
+                    res.map((resItem: {name: string, ext: string, content: Blob}) => {
                         buildResult.push({
                             path: this.template.slots.resource.path,
                             files: resItem

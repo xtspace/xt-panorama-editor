@@ -1,5 +1,14 @@
 # 全景编辑器
 
+### 线上体验
+https://720.xtspace.cn
+
+用户名：youke
+
+密码：Youke123
+
+**备注：数据会定期删除，请不要再体验账号上发布生产数据**
+
 ### 前言
 全景编辑器旨在满足用户对于创建、管理和编辑全景图像的需求，通过提供丰富的功能和直观的界面，让用户能够轻松地实现他们的创意和想法。
 
@@ -34,6 +43,7 @@ pnpm start
 ### 页面展示
 ![image](https://github.com/xtspace/xt-panorama-editor/assets/65204427/85d61150-1653-436c-87b6-dee4889ddb33)
 ![image-1](https://github.com/xtspace/xt-panorama-editor/assets/65204427/dbb775df-531b-4e3b-a22d-0edc7a1d0d29)
+
 
 ### 联系方式
 ![QR](https://github.com/xtspace/xt-panorama-editor/assets/65204427/ac9844b6-acca-4211-9cdd-087d6f7049e4)

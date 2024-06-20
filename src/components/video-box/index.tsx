@@ -3,9 +3,10 @@ import iconClose from "@/assets/close.png"
 import { isMobile } from 'react-device-detect';
 import VideoModel from '@/components/video-model'
 import { loadAssets } from '@/utils/common';
+import { IFileInfo } from '@/api/upload';
 
 interface IProps {
-    videoList: any[] 
+    videoList: IFileInfo[] 
     setIsShow: (v: boolean) => void
 }
 
@@ -19,7 +20,7 @@ export default function VideoBox(props: IProps) {
         {
             videoList.length > 1 ? <div className={isMobile ? s['scroll-video'] : s['multiple-video']}>
             {
-                videoList.map((videoItem: any) => {
+                videoList.map((videoItem: IFileInfo) => {
                     return <div key={videoItem.response.id}>
                         <video src={loadAssets(videoItem.response.url)} autoPlay={false} className='w-full h-95%' controls />
                         <span className='c-white text-center'>{videoItem.response.name}</span>

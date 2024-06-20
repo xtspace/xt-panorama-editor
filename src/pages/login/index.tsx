@@ -7,9 +7,10 @@ import { CodeEnum } from '@/enum/code';
 import { getStorage, setStorage } from '@/utils/storage';
 import { STORAGE } from '@/enum/storage';
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getUserInfoApi } from '@/api/user';
 import { encrypt } from "@/utils/crypto";
+import Vcode from 'react-vcode';
 
 type FormValues = {
     username: string;
@@ -20,6 +21,8 @@ type FormValues = {
 export default function Login() {
     const [isRegister, { toggle, setFalse }] = useBoolean(false);
 
+    const [captcha, setCaptcha] = useState<string>('');
+
     const navigate = useNavigate()
 
 
@@ -27,6 +30,11 @@ export default function Login() {
     useEffect(() => {
         getStorage(STORAGE.TOKEN) && navigate("/tour");
     }, []);
+
+
+    const handleClick = (e: string | null) => {
+        e && setCaptcha(e);
+    };
 
 
 
@@ -95,20 +103,43 @@ export default function Login() {
                     <Input.Password />
                 </Form.Item>
                 {
-                    isRegister && <Form.Item
-                        label="手机号"
-                        name="telephone"
-                        className='mb-30'
-                        rules={[
-                            { required: true, message: '请输入手机号' },
-                            {
-                                pattern: /^1[3456789]\d{9}$/,
-                                message: '请输入正确的手机号'
-                            }
-                        ]}
-                    >
-                        <Input />
-                    </Form.Item>
+                    isRegister && <>
+                        <Form.Item
+                            label="手机号"
+                            name="telephone"
+                            className='mb-30'
+                            rules={[
+                                { required: true, message: '请输入手机号' },
+                                {
+                                    pattern: /^1[3456789]\d{9}$/,
+                                    message: '请输入正确的手机号'
+                                }
+                            ]}
+                        >
+                            <Input />
+                        </Form.Item>
+                        <Form.Item
+                            label="验证码"
+                            name="captcha"
+                            className='mb-30'
+                            rules={[
+                                { required: true, message: '请输入验证码' },
+                                {
+                                    validator: async (_, value) => {
+                                        if (value !== captcha) return Promise.reject(new Error('验证码不正确，请重新输入!'));
+                                        return Promise.resolve();
+                                    },
+                                },
+                            ]}
+                        >
+                            <Row>
+                                <Col span={14}><Input /></Col>
+                                <Col span={8} offset={2}>
+                                    <Vcode height={30} width={100} onChange={(v) => { handleClick(v) }} />
+                                </Col>
+                            </Row>
+                        </Form.Item>
+                    </>
                 }
 
                 <Form.Item wrapperCol={{ offset: 8 }}>
