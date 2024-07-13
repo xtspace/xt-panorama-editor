@@ -42,7 +42,7 @@ pnpm start
 
 
 ### 页面展示
-![image](https://github.com/xtspace/xt-panorama-editor/assets/65204427/85d61150-1653-436c-87b6-dee4889ddb33)
+<img width="1053" alt="image" src="https://github.com/user-attachments/assets/aacfc0d6-7b07-4967-af8f-2849f6589d3c">
 ![image-1](https://github.com/xtspace/xt-panorama-editor/assets/65204427/dbb775df-531b-4e3b-a22d-0edc7a1d0d29)
 
 
