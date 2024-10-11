@@ -94,7 +94,7 @@ export default function Tour() {
                         setShareUrl(`${location.origin}/#/preview/${record.id}`)
                         setShareModal(true)
                     }}>分享链接</a>
-                    {
+                   {
                         !isFlag && <a className='ml-10 cursor-pointer' onClick={async () => {
                             if (offlineData?.find(d => d === record.id)) return
                             const data = await panoStore.requestData(record.id);
@@ -102,7 +102,6 @@ export default function Tour() {
                             if (!files) return message.error(record.title + '下载失败')
                             await generateProjectZip(files);
                         }}>{offlineData?.find(d => d === record.id) ? '下载中' : '离线下载'}</a>}
-
                 </>
             ),
         }
