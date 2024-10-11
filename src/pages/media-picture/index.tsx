@@ -1,7 +1,6 @@
-import { Input, message } from 'antd';
-import { deleteMaterial, IMaterial, updateMaterial } from '@/api/material';
+import { Input } from 'antd';
+import { IMaterial, updateMaterial } from '@/api/material';
 import { UploadTypeEnum } from '@/enum/upload';
-import { CodeEnum } from '@/enum/code';
 import folder from '@/assets/folder.png'
 import MaterialTable from '@/components/material-table';
 import { useRef } from 'react';
@@ -43,11 +42,9 @@ export default function MediaPicture() {
             render: (_: string, record: IMaterial) => (
                 <>
                     <a className='cursor-pointer' onClick={async (e) => {
-                        e.stopPropagation()
+                        e.stopPropagation();
                         if (!record.id) return
-                        const res = await deleteMaterial(record.id)
-                        if (res.data.code !== CodeEnum.SUCCESS) return message.error("删除失败")
-                        materialRef.current.reloadData()
+                        materialRef.current.delMaterial({ id: record.id, tips: record.directory ? '文件夹' : '图片', name: record.name });
                     }}>删除</a>
                 </>
             ),

@@ -1,8 +1,7 @@
 import { VideoCameraOutlined } from '@ant-design/icons';
-import { Input, Modal, message } from 'antd';
-import { deleteMaterial, IMaterial, updateMaterial } from '@/api/material';
+import { Input, Modal } from 'antd';
+import { IMaterial, updateMaterial } from '@/api/material';
 import { UploadTypeEnum } from '@/enum/upload';
-import { CodeEnum } from '@/enum/code';
 import { useRef, useState } from 'react';
 import folder from '@/assets/folder.png';
 import MaterialTable from '@/components/material-table';
@@ -61,9 +60,7 @@ export default function MediaVideo() {
                     <a className='cursor-pointer' onClick={async (e) => {
                         e.stopPropagation()
                         if (!record.id) return
-                        const res = await deleteMaterial(record.id)
-                        res.data.code !== CodeEnum.SUCCESS && message.error("删除失败")
-                        materialRef.current.reloadData()
+                        materialRef.current.delMaterial({ id: record.id, tips: record.directory ? '文件夹' : '视频', name: record.name });
                     }}>删除</a>
                 </>
             ),

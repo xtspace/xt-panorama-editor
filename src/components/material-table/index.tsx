@@ -1,7 +1,7 @@
 import { PlusOutlined, FolderOutlined, FolderAddOutlined } from '@ant-design/icons';
 import { Button, Table, Input, Modal, Form, message, Spin } from 'antd';
 import SearchInput from '@/components/search-input';
-import { addMaterial, IMaterial, IMaterialData, updateMultiMaterial } from '@/api/material';
+import { addMaterial, deleteMaterial, IMaterial, IMaterialData, updateMultiMaterial } from '@/api/material';
 import { UploadTypeEnum } from '@/enum/upload';
 import { CodeEnum } from '@/enum/code';
 import { produce } from 'immer';
@@ -23,6 +23,12 @@ interface IProps {
     fileAccept?: string
     btnTitle: string
     onRef: any
+}
+
+interface IDeleteProps {
+    id: string;
+    name: string;
+    tips: string;
 }
 
 export default function MaterialTable(props: IProps) {
@@ -55,7 +61,7 @@ export default function MaterialTable(props: IProps) {
     const [moveKey, setMoveKey] = useState<string[]>([])
 
     useImperativeHandle(onRef, () => ({
-        reloadData: () => setRequestParams(requestParams)
+        delMaterial: (val:IDeleteProps) => deleteTableData(val)
     }))
 
     const uploadCallback = async (data: IFileInfo[]) => {
@@ -110,7 +116,6 @@ export default function MaterialTable(props: IProps) {
     }
 
     const rowSelection = {
-        type: 'checkbox',
         selectedRowKeys: moveKey,
         onChange: (selectedRowKeys: string[], selectedRows: IMaterialData['records'][0][]) => {
             setMoveKey(selectedRowKeys)
@@ -140,6 +145,27 @@ export default function MaterialTable(props: IProps) {
         setMoveData([])
         setRequestParams({ parentId: folderId })
     }, [folderId])
+
+    const deleteTableData = (params: IDeleteProps) => {
+        Modal.confirm({
+            title: '提示',
+            content: `请确认是否删除【${params.name}】${params.tips}`,
+            okText: '确定',
+            cancelText: '取消',
+            footer: (_, { OkBtn, CancelBtn }) => (
+                <>
+                <CancelBtn />
+                <OkBtn />
+                </>
+            ),
+            onOk: async () => {
+                if (!params.id) return
+                const res = await deleteMaterial(params.id)
+                if (res.data.code !== CodeEnum.SUCCESS) return message.error("删除失败")
+                setRequestParams(requestParams);
+            },
+        });
+    }
 
 
 
@@ -171,7 +197,10 @@ export default function MaterialTable(props: IProps) {
             <Table
                 rowKey="id"
                 className={s["material-table"].c('mt-20')}
-                rowSelection={rowSelection}
+                rowSelection={{
+                    type: 'checkbox',
+                    ...rowSelection
+                }}
                 columns={tableColumns}
                 dataSource={tableData.list}
                 pagination={{

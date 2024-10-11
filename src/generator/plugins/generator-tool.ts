@@ -10,12 +10,12 @@ export default function pluginFactory() {
                 baseURL: downloadUrl,
                 method: "get",
                 url: data.url,
-                responseType: "blob",
+                responseType: data.ext !== 'json' ? "blob" : "json",
             }).then((res) => {
                 resolve({
                     name: data.name,
                     ext: data.ext,
-                    content: res.data
+                    content: data.ext !== 'json' ? res.data : JSON.stringify(res.data)
                 })
             }).catch(err => reject(err))
         })

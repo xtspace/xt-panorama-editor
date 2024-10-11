@@ -131,3 +131,23 @@ export function getFormattedTimestamp(format: string = "YYYY-MM-DD HH:mm:ss"): s
       .replace("mm", minutes)
       .replace("ss", seconds);
 }
+
+// 上传图片尺寸限制
+export function checkLogoWH(file: any, size: number) {
+  return new Promise<void>(function (resolve, reject) {
+    const fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      const image = new Image();
+      image.onload = function () {
+        if (image.width > size || image.height > size) {
+          reject();
+        } else {
+          resolve();
+        }
+      };
+      image.onerror = reject;
+      image.src = e?.target?.result && typeof e?.target?.result === 'string' ? e?.target?.result : '';
+    };
+    fileReader.readAsDataURL(file);
+  });
+}

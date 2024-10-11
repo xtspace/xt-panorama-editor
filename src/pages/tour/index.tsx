@@ -14,6 +14,8 @@ import { generateProjectZip } from '@/generator/download/zip';
 import QRCode from 'qrcode.react';
 import usePano from '@/hooks/usePano';
 import { offlineStore } from '@/utils/offline-store';
+import { getStorage } from '@/utils/storage';
+import { usePermission } from '@/hooks/usePermission';
 
 
 
@@ -29,6 +31,7 @@ export default function Tour() {
     }>();
     const saveRef = useRef<HTMLAnchorElement>(null);
     const offlineData = useSyncExternalStore(offlineStore.subscribe, () => offlineStore.getOfflineData())
+    const [isFlag] = usePermission(getStorage('USER_NAME'))
 
 
 
@@ -54,7 +57,7 @@ export default function Tour() {
         saveRef.current.href = canvasImg?.toDataURL('image/png');
         saveRef.current.download = '二维码';
     };
-    
+
 
 
     const columns: ColumnsType<IPanoData["records"][0]> = [
@@ -92,14 +95,14 @@ export default function Tour() {
                         setShareModal(true)
                     }}>分享链接</a>
                     {
-                        <a className='ml-10 cursor-pointer' onClick={async () => {
+                        !isFlag && <a className='ml-10 cursor-pointer' onClick={async () => {
                             if (offlineData?.find(d => d === record.id)) return
                             const data = await panoStore.requestData(record.id);
                             const files = await generateCore(data, record.id);
                             if (!files) return message.error(record.title + '下载失败')
                             await generateProjectZip(files);
-                        }}>{ offlineData?.find(d => d === record.id) ? '下载中' : '离线下载' }</a>
-                    }
+                        }}>{offlineData?.find(d => d === record.id) ? '下载中' : '离线下载'}</a>}
+
                 </>
             ),
         }

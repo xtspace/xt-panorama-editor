@@ -143,13 +143,13 @@ export default function Login() {
                 }
                 
                 <Form>
-                    <Form.Item
+                    {/* <Form.Item
                         wrapperCol={{ offset: 8 }}
                     >
                         <Button type="link" className='pl-0' htmlType="button" onClick={toggle}>
                             {!isRegister ? "没有账号?立即注册" : "已有账号?立即登录"}
                         </Button>
-                    </Form.Item>
+                    </Form.Item> */}
                 </Form>
                 <Form.Item wrapperCol={{ offset: 8 }}>
                     <Button className='w-full' type="primary" htmlType="submit">

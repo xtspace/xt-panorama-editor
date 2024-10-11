@@ -3,7 +3,8 @@ export const enum UploadTypeEnum  {
     VIDEO = 2,
     FLODER = 3,
     PANORAMA = 5,
-    AUDIO = 6
+    AUDIO = 6,
+    ARTICLE = 6,
 }
 
 // 1 六面体 2 分片

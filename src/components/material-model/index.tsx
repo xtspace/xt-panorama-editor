@@ -24,7 +24,7 @@ export default function MaterialModel(props: IProps) {
     const [folderId, setFolderId] = useState<string>('0');
     const [folderList, setFolderList] = useState<{ id: string, name: string }[]>([]);
     const [tableData, , requestParams, setRequestParams] = useAddMaterial(materialType)
-    const [addKey, setAddKey] = useState<string[]>([])
+    const [addKey, setAddKey] = useState<string[] | React.Key[]>([])
     const [addTableData, setAddTableData] = useState<IMaterial[]>([]);
     const [selectionType, setSelectionType] = useState<'checkbox' | 'radio'>('checkbox');
 
@@ -74,7 +74,7 @@ export default function MaterialModel(props: IProps) {
 
     const rowSelections = {
         selectedRowKeys: addKey,
-        onChange: (selectedRowKeys: string[], selectedRows: IMaterial[]) => {
+        onChange: (selectedRowKeys: React.Key[], selectedRows: IMaterial[]) => {
             setAddKey(selectedRowKeys)
             setAddTableData(selectedRows)
         },
@@ -83,14 +83,16 @@ export default function MaterialModel(props: IProps) {
         }),
     }
 
-    const modelTitle = () => {
+    const modelTitle = (materialType: UploadTypeEnum) => {
         const materialObj = {
             1: "图片素材库",
             2: "视频素材库",
             5: "全景素材库",
             6: "音频素材库",
+            7: "PDF素材库",
+            3: ""
         }
-        return materialObj[UploadTypeEnum.PANORAMA]
+        return materialObj[materialType]
     }
 
     const showColumns = () => {
@@ -141,7 +143,7 @@ export default function MaterialModel(props: IProps) {
     }, [materialType])
 
     return <>
-        <Modal title={modelTitle()} open={true} okText="确定" cancelText="取消" onCancel={() => setIsShow(false)} width={800} onOk={() => submitSelect(addTableData)}>
+        <Modal title={modelTitle(materialType)} open={true} okText="确定" cancelText="取消" onCancel={() => setIsShow(false)} width={800} onOk={() => submitSelect(addTableData)}>
             <div className='flex justify-between'>
                 <SearchInput
                     onFinish={(val) => setRequestParams({ ...val, current: 1 })}
