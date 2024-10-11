@@ -44,7 +44,7 @@ pnpm start
 
 ### 页面展示
 <img width="1053" alt="image" src="https://github.com/user-attachments/assets/aacfc0d6-7b07-4967-af8f-2849f6589d3c">
-![image](https://github.com/user-attachments/assets/39e9c89a-70c6-482b-ab45-754c4920cd08)
+<img width="1053" alt="image" src="https://github.com/user-attachments/assets/39e9c89a-70c6-482b-ab45-754c4920cd08">
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/46e66cb0-a0b2-4da1-a36d-7006e408f7b7">
 
 
