@@ -1,5 +1,5 @@
 import { request, AjaxResponse } from "@/utils/request";
-import { UploadTypeEnum } from '@/enum/upload';
+import { UploadSliceEnum, UploadTypeEnum } from '@/enum/upload';
 
 
 export interface IUploadData {
@@ -28,7 +28,9 @@ export interface IFileInfo {
     name: string,
     response?: any,
     realFileName?: string,
-    materialId?: string
+    materialId?: string,
+    content?: string,
+    alignType?: string
 }
 
 export interface IPanoFile {

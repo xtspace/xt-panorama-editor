@@ -1,8 +1,7 @@
 import { AudioOutlined } from '@ant-design/icons';
-import { Input, message, Modal } from 'antd';
-import { deleteMaterial, IMaterial, updateMaterial } from '@/api/material';
+import { Input, Modal } from 'antd';
+import { IMaterial, updateMaterial } from '@/api/material';
 import { UploadTypeEnum } from '@/enum/upload';
-import { CodeEnum } from '@/enum/code';
 import folder from '@/assets/folder.png';
 import MaterialTable from '@/components/material-table';
 import { useRef, useState } from 'react';
@@ -10,7 +9,7 @@ import { useRef, useState } from 'react';
 export default function MediaAudio() {
     const inputRef = useRef<HTMLInputElement>(null);
     const [isPlayingAudio, setIsPlayingAudio] = useState<boolean>(false);
-    const [previewFile, setPreviewFile] = useState<{name: string  | undefined, url: string | undefined}>()
+    const [previewFile, setPreviewFile] = useState<{ name: string | undefined, url: string | undefined }>()
 
     const materialRef = useRef<any>(null);
 
@@ -61,16 +60,14 @@ export default function MediaAudio() {
                     <a className='cursor-pointer' onClick={async (e) => {
                         e.stopPropagation()
                         if (!record.id) return
-                        const res = await deleteMaterial(record.id)
-                        res.data.code !== CodeEnum.SUCCESS && message.error("删除失败")
-                        materialRef.current.reloadData()
+                        materialRef.current.delMaterial({ id: record.id, tips: record.directory ? '文件夹' : '音频', name: record.name });
                     }}>删除</a>
                 </>
             ),
         },
     ]
     return <>
-        <MaterialTable onRef={materialRef} tableColumns={columns} materialType={UploadTypeEnum.AUDIO} fileAccept='audio/*' btnTitle='图片' />
+        <MaterialTable onRef={materialRef} tableColumns={columns} materialType={UploadTypeEnum.AUDIO} fileAccept='audio/*' btnTitle='音频' />
         <Modal title={previewFile?.name} open={isPlayingAudio} width={400} footer={null} onCancel={() => setIsPlayingAudio(false)} destroyOnClose={true}>
             <audio src={previewFile?.url} autoPlay controls className='w-full' />
         </Modal>

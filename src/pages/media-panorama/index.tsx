@@ -1,7 +1,6 @@
-import { Input, message } from 'antd';
-import { deleteMaterial, IMaterial, updateMaterial } from '@/api/material';
+import { Input } from 'antd';
+import { IMaterial, updateMaterial } from '@/api/material';
 import { UploadTypeEnum } from '@/enum/upload';
-import { CodeEnum } from '@/enum/code';
 import { useRef } from 'react';
 import folder from '@/assets/folder.png';
 import MaterialTable from '@/components/material-table';
@@ -59,9 +58,7 @@ export default function MediaPanorama() {
                     <a className='cursor-pointer' onClick={async (e) => {
                         e.stopPropagation()
                         if (!record.id) return
-                        const res = await deleteMaterial(record.id)
-                        if (res.data.code !== CodeEnum.SUCCESS) return message.error(record.directory ? res.data.message : "素材已被使用无法删除！")
-                        materialRef.current.reloadData()
+                        materialRef.current.delMaterial({ id: record.id, tips: record.directory ? '文件夹' : '全景', name: record.name });
                     }}>删除</a>
                 </>
             ),

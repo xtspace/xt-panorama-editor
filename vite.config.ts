@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { resolve } from "path";
 import UnoCSS from 'unocss/vite'
+import fixReactVirtualized from "esbuild-plugin-react-virtualized";
 
 
 export default defineConfig({
@@ -54,14 +55,14 @@ export default defineConfig({
         {
           chunkFileNames: "static/js/[name].js",
           entryFileNames: "static/js/[name].js",
-          assetFileNames: "static/[ext]/[name].[ext]",
-          manualChunks:(id)=>{
-            if(id.includes("generator")){
-              return "generator-worker"
-            }
-          }
+          assetFileNames: "static/[ext]/[name].[ext]"
         }
       ]
+    }
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      plugins: [fixReactVirtualized]
     }
   }
 })

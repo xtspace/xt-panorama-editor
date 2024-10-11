@@ -5,6 +5,7 @@ import { HashRouter } from "react-router-dom";
 import './index.less'
 import './reset.less'
 import 'virtual:uno.css'
+import '@wangeditor/editor/dist/css/style.css'
 import PanoContainer from './Pano.tsx';
 
 

@@ -3,8 +3,10 @@ import iconClose from "@/assets/close.png"
 import { isMobile } from 'react-device-detect';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Virtual, Navigation } from 'swiper/modules';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
-import RcViewer from 'rc-viewer'
+// import RcViewer from 'rc-viewer'
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -13,6 +15,7 @@ import 'swiper/css/autoplay';
 import s from './index.module.less';
 import { loadAssets } from '@/utils/common';
 import { IHotSpot } from '@/api/pano';
+import { IFileInfo } from '@/api/upload';
 interface CarouselProps {
     imgList: IHotSpot[]
     currentData?: IHotSpot
@@ -49,6 +52,17 @@ export default function Carousel(props: CarouselProps) {
         target.style.width = 'auto'
     }
 
+    const showContentHtml = (img: IFileInfo) => {
+        return <div className='c-#fff position-absolute bottom-0 h-20vh w-full flex justify-center z-10'>
+            <div
+                className='h-full whitespace-pre-line break-words overflow-y-scroll'
+                style={{ 'textAlign': img?.alignType, 'width': isMobile ? '100%': '30%', 'scrollbarWidth': 'none' }}
+            >
+                {img.content}
+            </div>
+        </div>
+    }
+
 
     return <>
         <div className={s["carousel-mask"].c("flex-center")} >
@@ -68,9 +82,23 @@ export default function Carousel(props: CarouselProps) {
                         {
                             d.imgs?.length && d.imgs?.length > 1 ?
                             <div className={isMobile ? s['scroll-container'] : s['multiple-container']}>
+                                <p className='c-#fff pos-absolute w-full left-0 top-4 text-center'>{d?.title}</p>
                                 {
                                     d.imgs?.map(img => {
-                                        return <RcViewer key={img.id} ><img src={loadAssets(img.url)} /></RcViewer>
+                                        return <PhotoProvider
+                                                key={img.id}
+                                                maskOpacity={0.5}
+                                                bannerVisible={false}
+                                                overlayRender={() => {
+                                                    return (
+                                                        showContentHtml(img)
+                                                    );
+                                                }}
+                                        >
+                                            <PhotoView src={loadAssets(img.url)}>
+                                                <img src={loadAssets(img.url)} />
+                                            </PhotoView>
+                                        </PhotoProvider>
                                     })
                                 }
                             </div> : 
@@ -78,7 +106,17 @@ export default function Carousel(props: CarouselProps) {
                                 <p className={s.title} >{d?.title}</p>
                                 {
                                     d.imgs?.map(img => {
-                                        return <RcViewer key={img.id} ><img src={loadAssets(img.url)} onLoad={onLoad} /></RcViewer>
+                                        return <div key={img.id}>
+                                            <PhotoProvider
+                                                maskOpacity={0.5}
+                                                bannerVisible={false}
+                                            >
+                                                <PhotoView src={loadAssets(img.url)}>
+                                                    <img src={loadAssets(img.url)} onLoad={onLoad} />
+                                                </PhotoView>
+                                            </PhotoProvider>
+                                            <div className='pos-absolute w-100vw bottom-0 left-0 h-20vh'>{ showContentHtml(img) }</div>
+                                        </div>
                                     })
                                 }
                             </div>

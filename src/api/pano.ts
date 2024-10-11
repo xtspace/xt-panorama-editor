@@ -3,6 +3,10 @@ import { HotspotTypeEnum } from '@/pages/editor-hotspot/config'
 import { IFileInfo } from "./upload";
 import { UploadSliceEnum } from "@/enum/upload";
 import { IconMarkerEnum, IconTypeEnum } from "@/enum/hotspot";
+import { CruiseProps } from "@/pages/editor-cruise/config";
+import { LogoProps } from "@/pages/editor-basic/config";
+import { Color, SAND_SPOT_TYPE, SAND_TYPE } from "@/pages/editor-sand/config";
+import { IArticleItem } from "@/components/editor-modal";
 
 
 export interface IPanoParams {
@@ -103,14 +107,22 @@ export interface IHotSpot {
     showTitle?: boolean
     scale?: number,
     type?: `${HotspotTypeEnum}`,
+    article?: Array<IArticleItem>
     imgs?: Array<IFileInfo>
     videos?: Array<IFileInfo>
     iconType: `${IconTypeEnum}`,
     textType: `${IconMarkerEnum}`
     audios?: Array<IFileInfo>
     content?: string
+    pdfs?: Array<IFileInfo>
 }
 
+interface IMaskData {
+    url: string;
+    scaling: number;
+    angle: number;
+    isRotate: boolean;
+}
 
 export interface IPanoSceneData {
     id: string,
@@ -124,7 +136,61 @@ export interface IPanoSceneData {
     pano?:IPanoItem,
     urls?:Array<string>
     hotspot: Array<IHotSpot>
+    cruise?: CruiseProps;
+    mask?: {
+        skyMask: IMaskData;
+        groundMask: IMaskData;
+    };
+    previewSand?: Array<{ id: string, isDefault: boolean }>
 }
+
+interface SandBox {
+    zorder: number
+    html: string
+    parent: string
+    type: string
+    width: string
+    height: string
+    bgalpha: string
+    ondown: string
+    align: string
+    enabled: boolean
+    css: string
+    xScale: number
+    yScale: number
+    scale: number
+}
+
+export interface ISandSpot extends ISpotHtml {
+    id: string
+    linkScene?: string
+    northSpot?: { hlookat: number, vlookat: number }
+    mapPoint?: { lng: number, lat: number }
+    type: SAND_SPOT_TYPE
+    style: {
+        spotColor: Color
+        borderColor: Color
+        selectBorder: Color
+        selectSpotColor: Color
+        scale: number
+        radar: boolean
+    }
+}
+
+export interface ISpotHtml {
+    box: Partial<SandBox>
+    title: Partial<SandBox>
+    spot: Partial<SandBox>
+}
+
+export interface ISandData {
+    url: string
+    name: string
+    id: string
+    spotList: ISandSpot[]
+    angle?: number
+    type: SAND_TYPE
+  }
 
 export interface IPanoDetailData {
     materials: Array<string>;
@@ -133,4 +199,6 @@ export interface IPanoDetailData {
     profile: string
     title: string
     count: number
+    logo?: LogoProps
+    sand?: Array<ISandData>
 }

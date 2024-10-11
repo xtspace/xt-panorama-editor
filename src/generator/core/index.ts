@@ -1,6 +1,7 @@
 import { IPanoDetailData } from "@/api/pano";
 import { FlattenFile } from "@/types/generator/file";
 import { offlineStore } from '@/utils/offline-store';
+import Worker from "./worker?worker&inline";
 
 
 export const enum ProcessEnum {
@@ -12,18 +13,12 @@ export const enum ProcessEnum {
 
 const { log } = console
 
-const isDev = import.meta.env.DEV;
-
-const DEFAULT_WORKER_JS = isDev ? "./worker.ts" : "./static/js/generator-worker.js";
-
-
 
 export async function generateCore(data: IPanoDetailData, panoId: string): Promise<FlattenFile> {
     
-    const workerJs = await loadWorkerJs(DEFAULT_WORKER_JS);
     return new Promise((resolve, reject) => {
 
-        const worker = new Worker(new URL(workerJs.url, import.meta.url).href, { type: 'module' });
+        const worker = new Worker();
 
 
         worker.postMessage({
@@ -61,22 +56,4 @@ export async function generateCore(data: IPanoDetailData, panoId: string): Promi
         }
 
     })
-}
-
-async function loadWorkerJs(workerJsUrl: string) {
-    const workerJsContent = !isDev
-        ? await fetch(workerJsUrl)
-            .then((res) => res.text())
-            .catch((err) => {
-                throw new Error(`Failed to fetch worker js: ${err}`);
-            })
-        : "";
-
-    const workerJs = {
-        url: isDev
-            ? new URL(workerJsUrl, import.meta.url).href
-            : self.URL.createObjectURL(new self.Blob([workerJsContent], { type: "application/javascript" })),
-    };
-
-    return workerJs;
 }

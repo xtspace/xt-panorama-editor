@@ -141,7 +141,6 @@ export default function Login() {
                         </Form.Item>
                     </>
                 }
-
                 <Form.Item wrapperCol={{ offset: 8 }}>
                     <Button className='w-full' type="primary" htmlType="submit">
                         {isRegister ? "注册" : "登录"}

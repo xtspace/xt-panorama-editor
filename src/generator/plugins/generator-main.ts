@@ -11,14 +11,21 @@ export default function pluginFactory() {
                 method: "get",
                 url: data.url,
             }).then((res) => {
+                let content = res.data;
+
+                if (data.name === "index" && data.ext === "js") {
+                    content = content.replace(/https:\/\/xtspace\.cc:8310\//g, '');
+                }
+
                 resolve({
                     name: data.name,
                     ext: data.ext,
-                    content: res.data
-                })
-            }).catch(err => reject(err))
-        })
+                    content: content
+                });
+            }).catch(err => reject(err));
+        });
     }
+
 
     return plugin
 

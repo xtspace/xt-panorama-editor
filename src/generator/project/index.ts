@@ -77,7 +77,7 @@ class Builder {
 
 
         if (this.plugins.panoFile) {
-            const paths = ['krpano.js', 'krpano.xml', 'webvr.js', 'skin/vtourskin.xml', 'plugins/webvr.xml'];
+            const paths = ['krpano.js', 'krpano.xml', 'webvr.js', 'skin/vtourskin.xml', 'plugins/webvr.xml', 'pdf.worker.js', 'krpano-sand.xml', 'plugins/radar.js'];
             const promise = paths.map(async p => await builders.panoFile(p))
 
             const files = await Promise.all(promise)
@@ -94,11 +94,11 @@ class Builder {
         if (this.plugins.main) {
             const paths = [
                 {
-                    url: "https://xtspace.cc:8310/offline/js/index.js",
+                    url: "https://xtspace.cc:8310/static/js/index.js",
                     name: "index",
                     ext: "js"
                 }, {
-                    url: "https://xtspace.cc:8310/offline/css/index.css",
+                    url: "https://xtspace.cc:8310/static/css/index.css",
                     name: "index",
                     ext: "css"
                 }
@@ -119,6 +119,11 @@ class Builder {
         if(this.plugins.tool){
             const paths = [
                 {
+                    url: "./tool/config.json",
+                    name: "config",
+                    ext: "json"
+                },
+                {
                     url: "./tool/window点击运行.exe",
                     name: "window点击运行",
                     ext: "exe"
@@ -136,7 +141,6 @@ class Builder {
             ]
             const promise = paths.map(async p => await builders.tool(p))
             const files = await Promise.all(promise)
-
             files?.map(d => {
                 buildResult.push({
                     path: this.template.slots.tool.path,

@@ -1,0 +1,42 @@
+.view {
+  background:#444;
+  display: flex;
+  justify-content: center;
+  height: 90vh;
+  padding: 50px 0;
+  overflow: auto;
+}
+.pageContainer {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+  width:max-content;
+  max-width:100%;
+}
+.pageTool{
+  position: absolute;
+  bottom: 7vh;
+  background: rgb(66, 66, 66);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 15px;
+  i{
+    padding: 5px;
+    margin:0 5px;
+    &:hover{
+      background: #333;
+    }
+  }
+  input{
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    margin-right: 10px;
+    height: 24px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  input[type="number"]{
+    -moz-appearance: textfield;
+  }
+}
