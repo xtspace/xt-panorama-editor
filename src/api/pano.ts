@@ -58,6 +58,11 @@ export function getPanoUrlsApi(idList:string[]){
     return request.post(`/file/pano/urls`, idList)
 }
 
+export interface IPositionProps {
+    keywords: string;
+    page: number;
+    offset: number;
+}
 
 export interface IPanoData {
     size: number;
@@ -201,4 +206,11 @@ export interface IPanoDetailData {
     count: number
     logo?: LogoProps
     sand?: Array<ISandData>
+    music?: {
+        mutex?: boolean;
+        url?: IFileInfo;
+        volume: number;
+        autoplay: boolean;
+        loop: boolean;
+    };
 }

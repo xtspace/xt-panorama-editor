@@ -1,47 +1,51 @@
 export const enum CategoryEnum {
-    TEXT="text",
-    IMG="img",
-    VIDEO="video",
-    LINK= "link",
-    AUDIO="audio",
+    TEXT = "text",
+    IMG = "img",
+    VIDEO = "video",
+    LINK = "link",
+    AUDIO = "audio",
+    HYPERLINK = "hyperLink",
+    PDF = "pdf",
+    ARTICLE = "article",
+    EVENT = "event",
 }
 
-export interface IHotSpot{
-    id?:string
-    name?:string
-    next?:string
-    icon:{
-        ath:number | string
-        atv:number | string
-        scale:number
-        url:string
-        edge:"center" | "bottom"
+export interface IHotSpot {
+    id?: string
+    name?: string
+    next?: string
+    icon: {
+        ath: number | string
+        atv: number | string
+        scale: number
+        url: string
+        edge: "center" | "bottom"
     },
-    author?:boolean,
-    title?:string,
-    type:`${CategoryEnum}`,
-    imgs?: Array< {
-         id: string
-         url:string
-       }>,
-    content?:string
-    videoUrl?:string
+    author?: boolean,
+    title?: string,
+    type: `${CategoryEnum}`,
+    imgs?: Array<{
+        id: string
+        url: string
+    }>,
+    content?: string
+    videoUrl?: string
 }
 
 export interface ISceneData {
-    id:string
-    name:string
-    next:string
-    img?:string
-    hotspot:Array<IHotSpot>
+    id: string
+    name: string
+    next: string
+    img?: string
+    hotspot: Array<IHotSpot>
 }
 
-export const data:ISceneData[] = [
+export const data: ISceneData[] = [
     {
         "id": "scene0",
         "name": "门口",
         "next": "scene1",
-        "img":"panos/0/thumb.jpg",
+        "img": "panos/0/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.LINK,
@@ -60,7 +64,7 @@ export const data:ISceneData[] = [
         "id": "scene1",
         "name": "入口",
         "next": "scene2",
-        "img":"panos/1/thumb.jpg",
+        "img": "panos/1/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.LINK,
@@ -92,7 +96,7 @@ export const data:ISceneData[] = [
         "id": "scene2",
         "name": "前言",
         "next": "scene3",
-        "img":"panos/2/thumb.jpg",
+        "img": "panos/2/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.LINK,
@@ -123,7 +127,7 @@ export const data:ISceneData[] = [
         "id": "scene3",
         "name": "1-3",
         "next": "scene4",
-        "img":"panos/3/thumb.jpg",
+        "img": "panos/3/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -137,7 +141,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4a12475ea6b55997a7901c0a29ac99dfv5.jpg"
+                        url: "593jk7kktu2/2/4a12475ea6b55997a7901c0a29ac99dfv5.jpg"
                     }
                 ]
             },
@@ -153,7 +157,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/14cfd55f4da36269f350fdca83627bd9v5.jpg"
+                        url: "593jk7kktu2/2/14cfd55f4da36269f350fdca83627bd9v5.jpg"
                     }
                 ]
             },
@@ -169,7 +173,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/df4d05ab302bf5f0f5b86dc83fb144f2v5.jpg"
+                        url: "593jk7kktu2/2/df4d05ab302bf5f0f5b86dc83fb144f2v5.jpg"
                     }
                 ]
             },
@@ -185,7 +189,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/6586eee0e46f85dd8b2707337666f749v5.jpg"
+                        url: "593jk7kktu2/2/6586eee0e46f85dd8b2707337666f749v5.jpg"
                     }
                 ]
             },
@@ -201,7 +205,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/622f622b2e7f03c71c2b8f7cacf11f01v5.jpg"
+                        url: "593jk7kktu2/2/622f622b2e7f03c71c2b8f7cacf11f01v5.jpg"
                     }
                 ]
             },
@@ -217,7 +221,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/8cd268120554e2efba384a0256a604edv5.jpg"
+                        url: "593jk7kktu2/2/8cd268120554e2efba384a0256a604edv5.jpg"
                     }
                 ]
             },
@@ -233,7 +237,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/11e92bcab7c8b662cdf21dfc91309296v5.jpg"
+                        url: "593jk7kktu2/2/11e92bcab7c8b662cdf21dfc91309296v5.jpg"
                     }
                 ]
             },
@@ -249,7 +253,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2f776ff8b9c9df3969184071faad50d8v5.jpg"
+                        url: "593jk7kktu2/2/2f776ff8b9c9df3969184071faad50d8v5.jpg"
                     }
                 ]
             },
@@ -265,7 +269,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/9ce8a044d9d2a5cfde7245d0d6edee81v5.jpg"
+                        url: "593jk7kktu2/2/9ce8a044d9d2a5cfde7245d0d6edee81v5.jpg"
                     }
                 ]
             },
@@ -281,7 +285,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a19f7790c3dbbb1d71d17e8e3418bcd3v5.jpg"
+                        url: "593jk7kktu2/2/a19f7790c3dbbb1d71d17e8e3418bcd3v5.jpg"
                     }
                 ]
             },
@@ -297,7 +301,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/51f6584236cfeb5a1b4888d78928e7eav5.jpg"
+                        url: "593jk7kktu2/2/51f6584236cfeb5a1b4888d78928e7eav5.jpg"
                     }
                 ]
             },
@@ -313,7 +317,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/8b20c692f45cdb15f91fa19e09252eb2v5.jpg"
+                        url: "593jk7kktu2/2/8b20c692f45cdb15f91fa19e09252eb2v5.jpg"
                     }
                 ]
             },
@@ -329,7 +333,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/1ceba13b625155efece557d144fbfdb9v5.jpg"
+                        url: "593jk7kktu2/2/1ceba13b625155efece557d144fbfdb9v5.jpg"
                     }
                 ]
             },
@@ -345,7 +349,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/cfc584d6ab8700f2f701e5b0c865a943v5.jpg"
+                        url: "593jk7kktu2/2/cfc584d6ab8700f2f701e5b0c865a943v5.jpg"
                     }
                 ]
             },
@@ -361,7 +365,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/0b07b0e30aa67dfbf75440707a4f3d6bv5.jpg"
+                        url: "593jk7kktu2/2/0b07b0e30aa67dfbf75440707a4f3d6bv5.jpg"
                     }
                 ]
             }
@@ -371,7 +375,7 @@ export const data:ISceneData[] = [
         "id": "scene4",
         "name": "4-6",
         "next": "scene5",
-        "img":"panos/4/thumb.jpg",
+        "img": "panos/4/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -385,7 +389,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/69d4d3441739f8e1f14de8824f1c9382v5.jpg"
+                        url: "593jk7kktu2/2/69d4d3441739f8e1f14de8824f1c9382v5.jpg"
                     }
                 ]
             },
@@ -401,7 +405,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/da64f1f6100e57711e83d23620572635v5.jpg"
+                        url: "593jk7kktu2/2/da64f1f6100e57711e83d23620572635v5.jpg"
                     }
                 ]
             },
@@ -417,7 +421,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/069eb20ae28648a59f7023c75cf3066bv5.jpg"
+                        url: "593jk7kktu2/2/069eb20ae28648a59f7023c75cf3066bv5.jpg"
                     }
                 ]
             },
@@ -433,7 +437,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/312226aee5a3505151aa52a32236f5cav5.jpg"
+                        url: "593jk7kktu2/2/312226aee5a3505151aa52a32236f5cav5.jpg"
                     }
                 ]
             },
@@ -449,7 +453,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/506f33adfd38e25b0c1b4d5741103ec8v5.jpg"
+                        url: "593jk7kktu2/2/506f33adfd38e25b0c1b4d5741103ec8v5.jpg"
                     }
                 ]
             },
@@ -465,7 +469,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2bab058bde818d98963938800a5ae64fv5.jpg"
+                        url: "593jk7kktu2/2/2bab058bde818d98963938800a5ae64fv5.jpg"
                     }
                 ]
             },
@@ -481,7 +485,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e268697e06d4e10feb08ef3ac8ec2e35v5.jpg"
+                        url: "593jk7kktu2/2/e268697e06d4e10feb08ef3ac8ec2e35v5.jpg"
                     }
                 ]
             },
@@ -497,7 +501,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/32540e36c7db251d3619f164cfb2c1cbv5.jpg"
+                        url: "593jk7kktu2/2/32540e36c7db251d3619f164cfb2c1cbv5.jpg"
                     }
                 ]
             },
@@ -513,7 +517,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e5ec1c495b71d594f014ac16a259ed4fv5.jpg"
+                        url: "593jk7kktu2/2/e5ec1c495b71d594f014ac16a259ed4fv5.jpg"
                     }
                 ]
             }
@@ -523,7 +527,7 @@ export const data:ISceneData[] = [
         "id": "scene5",
         "name": "7-9",
         "next": "scene6",
-        "img":"panos/5/thumb.jpg",
+        "img": "panos/5/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -537,7 +541,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/5e1601aeff981c0ab6d89688d2cae2d4v5.jpg"
+                        url: "593jk7kktu2/2/5e1601aeff981c0ab6d89688d2cae2d4v5.jpg"
                     }
                 ]
             },
@@ -553,7 +557,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a9d0dc3d84b367ae581ea662cc8c43f9v5.jpg"
+                        url: "593jk7kktu2/2/a9d0dc3d84b367ae581ea662cc8c43f9v5.jpg"
                     }
                 ]
             },
@@ -569,7 +573,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/28764047f17f41f5908528cfa03185c5v5.jpg"
+                        url: "593jk7kktu2/2/28764047f17f41f5908528cfa03185c5v5.jpg"
                     }
                 ]
             },
@@ -585,7 +589,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/992e8598e2da5355d461e76e0962be9fv5.jpg"
+                        url: "593jk7kktu2/2/992e8598e2da5355d461e76e0962be9fv5.jpg"
                     }
                 ]
             },
@@ -601,7 +605,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/9a66a80cac2e7e0892056df961972b2fv5.jpg"
+                        url: "593jk7kktu2/2/9a66a80cac2e7e0892056df961972b2fv5.jpg"
                     }
                 ]
             },
@@ -617,7 +621,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4ae8c238aaff74b9333fac38597a4d96v5.jpg"
+                        url: "593jk7kktu2/2/4ae8c238aaff74b9333fac38597a4d96v5.jpg"
                     }
                 ]
             },
@@ -633,7 +637,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/41de64930367b7a49bbd94a52e263f0ev5.jpg"
+                        url: "593jk7kktu2/2/41de64930367b7a49bbd94a52e263f0ev5.jpg"
                     }
                 ]
             },
@@ -649,7 +653,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/3c8b44ce437cb57f5b317adcb11ef1bdv5.jpg"
+                        url: "593jk7kktu2/2/3c8b44ce437cb57f5b317adcb11ef1bdv5.jpg"
                     }
                 ]
             },
@@ -665,7 +669,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/d47b7a226ceaa7c9655c5fd03ffce13av5.jpg"
+                        url: "593jk7kktu2/2/d47b7a226ceaa7c9655c5fd03ffce13av5.jpg"
                     }
                 ]
             },
@@ -681,7 +685,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/ec1f3425feb37d48d409eaed43147c33v5.jpg"
+                        url: "593jk7kktu2/2/ec1f3425feb37d48d409eaed43147c33v5.jpg"
                     }
                 ]
             },
@@ -697,7 +701,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/5ec480043ebb3f3a9c60f94baf57e00fv5.jpg"
+                        url: "593jk7kktu2/2/5ec480043ebb3f3a9c60f94baf57e00fv5.jpg"
                     }
                 ]
             },
@@ -713,7 +717,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/dd703460d8bb58100bc62f99fad00835v5.jpg"
+                        url: "593jk7kktu2/2/dd703460d8bb58100bc62f99fad00835v5.jpg"
                     }
                 ]
             },
@@ -729,7 +733,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4f22b7da0ade0609cb056b75557e1065v5.jpg"
+                        url: "593jk7kktu2/2/4f22b7da0ade0609cb056b75557e1065v5.jpg"
                     }
                 ]
             },
@@ -745,7 +749,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/5d2a045e73b4f783d6dc49e6556141aav5.jpg"
+                        url: "593jk7kktu2/2/5d2a045e73b4f783d6dc49e6556141aav5.jpg"
                     }
                 ]
             }
@@ -755,7 +759,7 @@ export const data:ISceneData[] = [
         "id": "scene6",
         "name": "10",
         "next": "scene7",
-        "img":"panos/6/thumb.jpg",
+        "img": "panos/6/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -767,9 +771,9 @@ export const data:ISceneData[] = [
                     "scale": 0.5,
                     "url": "assets/yuandian.png"
                 },
-                imgs:[
+                imgs: [
                     {
-                        url:"593jk7kktu2/2/6496e1e6eebbe44d9045ab12549da61cv5.jpg"
+                        url: "593jk7kktu2/2/6496e1e6eebbe44d9045ab12549da61cv5.jpg"
                     }
                 ]
             },
@@ -783,9 +787,9 @@ export const data:ISceneData[] = [
                     "scale": 0.5,
                     "url": "assets/yuandian.png"
                 },
-                imgs:[
+                imgs: [
                     {
-                        url:"593jk7kktu2/2/36b454d7711b11e1e1946a502064692dv5.jpg"
+                        url: "593jk7kktu2/2/36b454d7711b11e1e1946a502064692dv5.jpg"
                     }
                 ]
             }
@@ -795,7 +799,7 @@ export const data:ISceneData[] = [
         "id": "scene7",
         "name": "11-12",
         "next": "scene8",
-        "img":"panos/11-12.tiles/thumb.jpg",
+        "img": "panos/11-12.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -809,7 +813,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/0c8238b4536befde65d9684707f73ff8v5.jpg"
+                        url: "593jk7kktu2/2/0c8238b4536befde65d9684707f73ff8v5.jpg"
                     }
                 ]
             },
@@ -825,7 +829,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/341f38e84e3e9032139120a8be0d06bdv5.jpg"
+                        url: "593jk7kktu2/2/341f38e84e3e9032139120a8be0d06bdv5.jpg"
                     }
                 ]
             },
@@ -841,7 +845,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/6add39e185417f014f54e3ad043df9f6v5.jpg"
+                        url: "593jk7kktu2/2/6add39e185417f014f54e3ad043df9f6v5.jpg"
                     }
                 ]
             },
@@ -857,7 +861,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/8b4d3c97667176a43fc9909f048b9c79v5.jpg"
+                        url: "593jk7kktu2/2/8b4d3c97667176a43fc9909f048b9c79v5.jpg"
                     }
                 ]
             },
@@ -873,7 +877,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/efdb0d29842cc3e47be32b0772c07810v5.jpg"
+                        url: "593jk7kktu2/2/efdb0d29842cc3e47be32b0772c07810v5.jpg"
                     }
                 ]
             },
@@ -889,7 +893,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e2679840c568213c1b2582ffa6ffc627v5.jpg"
+                        url: "593jk7kktu2/2/e2679840c568213c1b2582ffa6ffc627v5.jpg"
                     }
                 ]
             },
@@ -905,7 +909,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/773cde069bb535f7477284e33fe36319v5.jpg"
+                        url: "593jk7kktu2/2/773cde069bb535f7477284e33fe36319v5.jpg"
                     }
                 ]
             },
@@ -921,7 +925,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/6d89c9284dec2cee537a3143a48f7bb3v5.jpg"
+                        url: "593jk7kktu2/2/6d89c9284dec2cee537a3143a48f7bb3v5.jpg"
                     }
                 ]
             }
@@ -931,7 +935,7 @@ export const data:ISceneData[] = [
         "id": "scene8",
         "name": "13-14",
         "next": "scene9",
-        "img":"panos/13-14.tiles/thumb.jpg",
+        "img": "panos/13-14.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -945,7 +949,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a2c3949512301d183c172e4955ef0bb4v5.jpg"
+                        url: "593jk7kktu2/2/a2c3949512301d183c172e4955ef0bb4v5.jpg"
                     }
                 ]
             },
@@ -961,7 +965,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/8642408aa7100e28e68d3bffe78c6fdbv5.jpg"
+                        url: "593jk7kktu2/2/8642408aa7100e28e68d3bffe78c6fdbv5.jpg"
                     }
                 ]
             },
@@ -977,7 +981,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/92fa7ef3d31a663beaea6a1c979c5cacv5.jpg"
+                        url: "593jk7kktu2/2/92fa7ef3d31a663beaea6a1c979c5cacv5.jpg"
                     }
                 ]
             },
@@ -993,7 +997,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/c6921936859db9a5a7692c2e70d8d50av5.jpg"
+                        url: "593jk7kktu2/2/c6921936859db9a5a7692c2e70d8d50av5.jpg"
                     }
                 ]
             },
@@ -1009,7 +1013,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/9da934af98bf90a7e1909ccd208b88abv5.jpg"
+                        url: "593jk7kktu2/2/9da934af98bf90a7e1909ccd208b88abv5.jpg"
                     }
                 ]
             },
@@ -1025,7 +1029,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/3d7acc6d4997df3c29541a155e4d8a8fv5.jpg"
+                        url: "593jk7kktu2/2/3d7acc6d4997df3c29541a155e4d8a8fv5.jpg"
                     }
                 ]
             },
@@ -1041,7 +1045,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/55cafb4945afdfdf4ca85342fdd04cacv5.jpg"
+                        url: "593jk7kktu2/2/55cafb4945afdfdf4ca85342fdd04cacv5.jpg"
                     }
                 ]
             },
@@ -1057,7 +1061,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/d90d2c136361331bda10021b5c8a8505v5.jpg"
+                        url: "593jk7kktu2/2/d90d2c136361331bda10021b5c8a8505v5.jpg"
                     }
                 ]
             },
@@ -1073,7 +1077,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/b4a88ba65e7b571baf1f81e71fc2cedcv5.jpg"
+                        url: "593jk7kktu2/2/b4a88ba65e7b571baf1f81e71fc2cedcv5.jpg"
                     }
                 ]
             },
@@ -1089,7 +1093,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e726f7c953f4936e2b89634f0c3fdfabv5.jpg"
+                        url: "593jk7kktu2/2/e726f7c953f4936e2b89634f0c3fdfabv5.jpg"
                     }
                 ]
             },
@@ -1105,7 +1109,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/b3585b69d036dd75e4cdd9fdbb9e6186v5.jpg"
+                        url: "593jk7kktu2/2/b3585b69d036dd75e4cdd9fdbb9e6186v5.jpg"
                     }
                 ]
             },
@@ -1121,7 +1125,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a80137f3217435d0d718d4adbb379148v5.jpg"
+                        url: "593jk7kktu2/2/a80137f3217435d0d718d4adbb379148v5.jpg"
                     }
                 ]
             },
@@ -1137,7 +1141,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/33dae85798370ef58cf93008f9c4db17v5.jpg"
+                        url: "593jk7kktu2/2/33dae85798370ef58cf93008f9c4db17v5.jpg"
                     }
                 ]
             },
@@ -1153,7 +1157,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/28c7a847ce29f0eacc180bb049eff35bv5.jpg"
+                        url: "593jk7kktu2/2/28c7a847ce29f0eacc180bb049eff35bv5.jpg"
                     }
                 ]
             },
@@ -1169,7 +1173,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/3e1910db241fdd8979ae873848565a0ev5.jpg"
+                        url: "593jk7kktu2/2/3e1910db241fdd8979ae873848565a0ev5.jpg"
                     }
                 ]
             },
@@ -1185,7 +1189,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/9c069456cfd197d6cd22414381dfdb98v5.jpg"
+                        url: "593jk7kktu2/2/9c069456cfd197d6cd22414381dfdb98v5.jpg"
                     }
                 ]
             },
@@ -1201,7 +1205,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4e4e33b545fbde86c115102c0d886952v5.jpg"
+                        url: "593jk7kktu2/2/4e4e33b545fbde86c115102c0d886952v5.jpg"
                     }
                 ]
             },
@@ -1217,7 +1221,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2//35d7503fc9c6592aee47df677bce9f20v5.jpg"
+                        url: "593jk7kktu2/2//35d7503fc9c6592aee47df677bce9f20v5.jpg"
                     }
                 ]
             },
@@ -1233,7 +1237,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/ad91723bdb801b66562137704e815e55v5.jpg"
+                        url: "593jk7kktu2/2/ad91723bdb801b66562137704e815e55v5.jpg"
                     }
                 ]
             },
@@ -1249,7 +1253,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/29531eb02b21a0d57c0c2cd808a663fbv5.jpg"
+                        url: "593jk7kktu2/2/29531eb02b21a0d57c0c2cd808a663fbv5.jpg"
                     }
                 ]
             }
@@ -1259,7 +1263,7 @@ export const data:ISceneData[] = [
         "id": "scene9",
         "name": "15-16",
         "next": "scene10",
-        "img":"panos/15-16.tiles/thumb.jpg",
+        "img": "panos/15-16.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -1273,7 +1277,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4760a4339846e21a0768a57407d28565v5.jpg"
+                        url: "593jk7kktu2/2/4760a4339846e21a0768a57407d28565v5.jpg"
                     }
                 ]
             },
@@ -1289,7 +1293,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/87dace9887666d47a005f6fc871247c4v5.jpg"
+                        url: "593jk7kktu2/2/87dace9887666d47a005f6fc871247c4v5.jpg"
                     }
                 ]
             },
@@ -1305,7 +1309,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/7216673e1c6bd135b8615c01051bf0f3v5.jpg"
+                        url: "593jk7kktu2/2/7216673e1c6bd135b8615c01051bf0f3v5.jpg"
                     }
                 ]
             },
@@ -1321,7 +1325,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/baaa1972f1a28182f220a9fa0e4c6ca1v5.jpg"
+                        url: "593jk7kktu2/2/baaa1972f1a28182f220a9fa0e4c6ca1v5.jpg"
                     }
                 ]
             },
@@ -1329,7 +1333,7 @@ export const data:ISceneData[] = [
                 "type": CategoryEnum.IMG,
                 "title": "",
                 "icon": {
-                    "ath":75.844,
+                    "ath": 75.844,
                     "atv": -5.359,
                     "edge": "center",
                     "scale": 0.5,
@@ -1337,7 +1341,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a443498c2a277c5c976fcc7f0465d39cv5.jpg"
+                        url: "593jk7kktu2/2/a443498c2a277c5c976fcc7f0465d39cv5.jpg"
                     }
                 ]
             },
@@ -1353,7 +1357,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e794624cca71f8b2c98743b072b63776v5.jpg"
+                        url: "593jk7kktu2/2/e794624cca71f8b2c98743b072b63776v5.jpg"
                     }
                 ]
             },
@@ -1369,7 +1373,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/af842b4271d6a4d26e0a169f052dbfe4v5.jpg"
+                        url: "593jk7kktu2/2/af842b4271d6a4d26e0a169f052dbfe4v5.jpg"
                     }
                 ]
             },
@@ -1385,7 +1389,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/7331a6312731b29b3a3fc52b986359f1v5.jpg"
+                        url: "593jk7kktu2/2/7331a6312731b29b3a3fc52b986359f1v5.jpg"
                     }
                 ]
             },
@@ -1401,7 +1405,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/354a2e7651a607209387074bf3c0e2bcv5.jpg"
+                        url: "593jk7kktu2/2/354a2e7651a607209387074bf3c0e2bcv5.jpg"
                     }
                 ]
             },
@@ -1417,7 +1421,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/47624b049a1fe244f1c8c5eac315247ev5.jpg"
+                        url: "593jk7kktu2/2/47624b049a1fe244f1c8c5eac315247ev5.jpg"
                     }
                 ]
             },
@@ -1433,7 +1437,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/36fb28462f270c369ce7734032886929v5.jpg"
+                        url: "593jk7kktu2/2/36fb28462f270c369ce7734032886929v5.jpg"
                     }
                 ]
             },
@@ -1449,7 +1453,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/0bcf9093c2e97184ec05b0282e8a7cb4v5.jpg"
+                        url: "593jk7kktu2/2/0bcf9093c2e97184ec05b0282e8a7cb4v5.jpg"
                     }
                 ]
             }
@@ -1459,7 +1463,7 @@ export const data:ISceneData[] = [
         "id": "scene10",
         "name": "17-18",
         "next": "scene11",
-        "img":"panos/17-18.tiles/thumb.jpg",
+        "img": "panos/17-18.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -1473,7 +1477,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/bbc295c344fb8e56accd67d38cd7388av5.jpg"
+                        url: "593jk7kktu2/2/bbc295c344fb8e56accd67d38cd7388av5.jpg"
                     }
                 ]
             },
@@ -1489,7 +1493,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/7d97062061f66a5b631ec7f8797643abv5.jpg"
+                        url: "593jk7kktu2/2/7d97062061f66a5b631ec7f8797643abv5.jpg"
                     }
                 ]
             },
@@ -1505,7 +1509,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/efd98425ea249e84fad8ff5738ecc7c2v5.jpg"
+                        url: "593jk7kktu2/2/efd98425ea249e84fad8ff5738ecc7c2v5.jpg"
                     }
                 ]
             },
@@ -1521,7 +1525,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/f0e67beba382174f08f0d7836476b910v5.jpg"
+                        url: "593jk7kktu2/2/f0e67beba382174f08f0d7836476b910v5.jpg"
                     }
                 ]
             },
@@ -1537,7 +1541,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/d7e6608f401f6877b43a9a7ecb64cff5v5.jpg"
+                        url: "593jk7kktu2/2/d7e6608f401f6877b43a9a7ecb64cff5v5.jpg"
                     }
                 ]
             },
@@ -1553,7 +1557,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/aff2f1118e9266b6e827c6c90dc7efefv5.jpg"
+                        url: "593jk7kktu2/2/aff2f1118e9266b6e827c6c90dc7efefv5.jpg"
                     }
                 ]
             },
@@ -1569,7 +1573,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a9c6734b7bdbc1cbf560827f44e6f420v5.jpg"
+                        url: "593jk7kktu2/2/a9c6734b7bdbc1cbf560827f44e6f420v5.jpg"
                     }
                 ]
             },
@@ -1585,7 +1589,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/1b2e15488e869852aeface7e54ab732dv5.jpg"
+                        url: "593jk7kktu2/2/1b2e15488e869852aeface7e54ab732dv5.jpg"
                     }
                 ]
             },
@@ -1601,7 +1605,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2615440be27f256cee11e8bdbe8eeb46v5.jpg"
+                        url: "593jk7kktu2/2/2615440be27f256cee11e8bdbe8eeb46v5.jpg"
                     }
                 ]
             },
@@ -1617,7 +1621,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/8afe0dc2b91e3a1a4f60f7785407f166v5.jpg"
+                        url: "593jk7kktu2/2/8afe0dc2b91e3a1a4f60f7785407f166v5.jpg"
                     }
                 ]
             },
@@ -1633,7 +1637,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/b86cd36b7649685bdfba9755e52c2c73v5.jpg"
+                        url: "593jk7kktu2/2/b86cd36b7649685bdfba9755e52c2c73v5.jpg"
                     }
                 ]
             },
@@ -1649,7 +1653,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/437dc76522d86bda2e3dca574665ffd0v5.jpg"
+                        url: "593jk7kktu2/2/437dc76522d86bda2e3dca574665ffd0v5.jpg"
                     }
                 ]
             },
@@ -1665,7 +1669,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/075ffd879e1701fd3e84222340da3a14v5.jpg"
+                        url: "593jk7kktu2/2/075ffd879e1701fd3e84222340da3a14v5.jpg"
                     }
                 ]
             }
@@ -1675,7 +1679,7 @@ export const data:ISceneData[] = [
         "id": "scene11",
         "name": "19",
         "next": "scene12",
-        "img":"panos/19.tiles/thumb.jpg",
+        "img": "panos/19.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -1689,7 +1693,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/418632dabc744b216288cb6bc17a943dv5.jpg"
+                        url: "593jk7kktu2/2/418632dabc744b216288cb6bc17a943dv5.jpg"
                     }
                 ]
             },
@@ -1705,7 +1709,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e1cbb48f2f0b7c960a51958a25ce5d4av5.jpg"
+                        url: "593jk7kktu2/2/e1cbb48f2f0b7c960a51958a25ce5d4av5.jpg"
                     }
                 ]
             },
@@ -1721,7 +1725,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/b8983c493d8686c7810473eb4a1ec729v5.jpg"
+                        url: "593jk7kktu2/2/b8983c493d8686c7810473eb4a1ec729v5.jpg"
                     }
                 ]
             },
@@ -1737,7 +1741,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/3e7f84407d9c36a107a1d42b3adf7d36v5.jpg"
+                        url: "593jk7kktu2/2/3e7f84407d9c36a107a1d42b3adf7d36v5.jpg"
                     }
                 ]
             },
@@ -1753,7 +1757,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2d40754e8ca13c80d519e210f78005dbv5.jpg"
+                        url: "593jk7kktu2/2/2d40754e8ca13c80d519e210f78005dbv5.jpg"
                     }
                 ]
             },
@@ -1769,7 +1773,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/cbe313627da5995c651896914dbd8fe9v5.jpg"
+                        url: "593jk7kktu2/2/cbe313627da5995c651896914dbd8fe9v5.jpg"
                     }
                 ]
             }
@@ -1779,7 +1783,7 @@ export const data:ISceneData[] = [
         "id": "scene12",
         "name": "20-21",
         "next": "scene13",
-        "img":"panos/20-21.tiles/thumb.jpg",
+        "img": "panos/20-21.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -1793,7 +1797,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/1cd6fde43893adb17906a738ae56f961v5.jpg"
+                        url: "593jk7kktu2/2/1cd6fde43893adb17906a738ae56f961v5.jpg"
                     }
                 ]
             },
@@ -1809,7 +1813,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/54db52ca634e9cf0eff868c138afda6fv5.jpg"
+                        url: "593jk7kktu2/2/54db52ca634e9cf0eff868c138afda6fv5.jpg"
                     }
                 ]
             },
@@ -1825,7 +1829,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2b5f2249fee1782670aa57fd32971a3dv5.jpg"
+                        url: "593jk7kktu2/2/2b5f2249fee1782670aa57fd32971a3dv5.jpg"
                     }
                 ]
             },
@@ -1841,7 +1845,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/8458adec6f2970fe7e8d905a8ec0066cv5.jpg"
+                        url: "593jk7kktu2/2/8458adec6f2970fe7e8d905a8ec0066cv5.jpg"
                     }
                 ]
             },
@@ -1857,7 +1861,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/eb6f6de16a9d06d15a1a38a112945649v5.jpg"
+                        url: "593jk7kktu2/2/eb6f6de16a9d06d15a1a38a112945649v5.jpg"
                     }
                 ]
             },
@@ -1873,7 +1877,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e5ee362dafb4fb29ad34ca385b3b8c48v5.jpg"
+                        url: "593jk7kktu2/2/e5ee362dafb4fb29ad34ca385b3b8c48v5.jpg"
                     }
                 ]
             },
@@ -1889,7 +1893,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/d5519a6f54ab52439884fc2735b14d39v5.jpg"
+                        url: "593jk7kktu2/2/d5519a6f54ab52439884fc2735b14d39v5.jpg"
                     }
                 ]
             },
@@ -1905,7 +1909,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/c95e63b85684db18f93fe818d61d5bfav5.jpg"
+                        url: "593jk7kktu2/2/c95e63b85684db18f93fe818d61d5bfav5.jpg"
                     }
                 ]
             },
@@ -1921,7 +1925,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/68d3d3334889918d93ab8cada7750cb2v5.jpg"
+                        url: "593jk7kktu2/2/68d3d3334889918d93ab8cada7750cb2v5.jpg"
                     }
                 ]
             },
@@ -1937,7 +1941,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2f756284fa1bfda1e0c01d06de2c9d30v5.jpg"
+                        url: "593jk7kktu2/2/2f756284fa1bfda1e0c01d06de2c9d30v5.jpg"
                     }
                 ]
             }
@@ -1947,7 +1951,7 @@ export const data:ISceneData[] = [
         "id": "scene13",
         "name": "22",
         "next": "scene14",
-        "img":"panos/22.tiles/thumb.jpg",
+        "img": "panos/22.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -1961,7 +1965,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/c4113adb9e08f00b1800579d64dec389v5.jpg"
+                        url: "593jk7kktu2/2/c4113adb9e08f00b1800579d64dec389v5.jpg"
                     }
                 ]
             },
@@ -1977,7 +1981,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/ff94a19a9b76161adfb3cacab33c01bev5.jpg"
+                        url: "593jk7kktu2/2/ff94a19a9b76161adfb3cacab33c01bev5.jpg"
                     }
                 ]
             },
@@ -1993,7 +1997,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/9084d38bc768f618dd782d43cdc54163v5.jpg"
+                        url: "593jk7kktu2/2/9084d38bc768f618dd782d43cdc54163v5.jpg"
                     }
                 ]
             },
@@ -2009,7 +2013,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/b7bcded445beab10005ac0ab419926d5v5.jpg"
+                        url: "593jk7kktu2/2/b7bcded445beab10005ac0ab419926d5v5.jpg"
                     }
                 ]
             },
@@ -2025,7 +2029,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4155f7903635c98424ed9f7dd63288d7v5.jpg"
+                        url: "593jk7kktu2/2/4155f7903635c98424ed9f7dd63288d7v5.jpg"
                     }
                 ]
             },
@@ -2041,7 +2045,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/991e1d055783db44c44656e1cdb6caa8v5.jpg"
+                        url: "593jk7kktu2/2/991e1d055783db44c44656e1cdb6caa8v5.jpg"
                     }
                 ]
             },
@@ -2057,7 +2061,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/512aea520ad5e44359736e0be61f3514v5.jpg"
+                        url: "593jk7kktu2/2/512aea520ad5e44359736e0be61f3514v5.jpg"
                     }
                 ]
             },
@@ -2073,7 +2077,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/97113a1b3c282009887de590bb405f98v5.jpg"
+                        url: "593jk7kktu2/2/97113a1b3c282009887de590bb405f98v5.jpg"
                     }
                 ]
             }
@@ -2083,7 +2087,7 @@ export const data:ISceneData[] = [
         "id": "scene14",
         "name": "23",
         "next": "scene15",
-        "img":"panos/23.tiles/thumb.jpg",
+        "img": "panos/23.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -2097,7 +2101,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2//441eec3648501d1c881df99447c4dfb4v5.jpg"
+                        url: "593jk7kktu2/2//441eec3648501d1c881df99447c4dfb4v5.jpg"
                     }
                 ]
             },
@@ -2113,7 +2117,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/7493855e3bf39a42dc54a43eb6719158v5.jpg"
+                        url: "593jk7kktu2/2/7493855e3bf39a42dc54a43eb6719158v5.jpg"
                     }
                 ]
             },
@@ -2129,7 +2133,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/e833575acf1c617d61773ee6c2b48b17v5.jpg"
+                        url: "593jk7kktu2/2/e833575acf1c617d61773ee6c2b48b17v5.jpg"
                     }
                 ]
             },
@@ -2145,7 +2149,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/a55347a3da1b4b4d77a37759381a534dv5.jpg"
+                        url: "593jk7kktu2/2/a55347a3da1b4b4d77a37759381a534dv5.jpg"
                     }
                 ]
             },
@@ -2161,7 +2165,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/1594c99470a561809c711a000304c3f8v5.jpg"
+                        url: "593jk7kktu2/2/1594c99470a561809c711a000304c3f8v5.jpg"
                     }
                 ]
             },
@@ -2177,7 +2181,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/14bfb8169e57e77e0884d6dff0adc8bcv5.jpg"
+                        url: "593jk7kktu2/2/14bfb8169e57e77e0884d6dff0adc8bcv5.jpg"
                     }
                 ]
             },
@@ -2193,7 +2197,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/254a12615628b368eb731459a067b149v5.jpg"
+                        url: "593jk7kktu2/2/254a12615628b368eb731459a067b149v5.jpg"
                     }
                 ]
             },
@@ -2209,7 +2213,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/42e18aea5330d47cadbfd4ee79b0ad40v5.jpg"
+                        url: "593jk7kktu2/2/42e18aea5330d47cadbfd4ee79b0ad40v5.jpg"
                     }
                 ]
             }
@@ -2219,14 +2223,14 @@ export const data:ISceneData[] = [
         "id": "scene15",
         "name": "24",
         "next": "scene16",
-        "img":"panos/24.tiles/thumb.jpg",
+        "img": "panos/24.tiles/thumb.jpg",
         "hotspot": []
     },
     {
         "id": "scene16",
         "name": "25-26",
         "next": "scene17",
-        "img":"panos/25-26.tiles/thumb.jpg",
+        "img": "panos/25-26.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -2240,7 +2244,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2fa1385ded651888ad627a84013791d4v5.jpg"
+                        url: "593jk7kktu2/2/2fa1385ded651888ad627a84013791d4v5.jpg"
                     }
                 ]
             },
@@ -2256,7 +2260,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/007b8cbb120c051420e28085514ee65dv5.jpg"
+                        url: "593jk7kktu2/2/007b8cbb120c051420e28085514ee65dv5.jpg"
                     }
                 ]
             },
@@ -2272,7 +2276,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4eb73c85366bf6c5fdca06de09cf6baev5.jpg"
+                        url: "593jk7kktu2/2/4eb73c85366bf6c5fdca06de09cf6baev5.jpg"
                     }
                 ]
             },
@@ -2280,7 +2284,7 @@ export const data:ISceneData[] = [
                 "type": CategoryEnum.IMG,
                 "title": "",
                 "icon": {
-                    "ath":11.106,
+                    "ath": 11.106,
                     "atv": 4.690,
                     "edge": "center",
                     "scale": 0.5,
@@ -2288,7 +2292,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/f2b9869a75343c917c926b32c24add47v5.jpg"
+                        url: "593jk7kktu2/2/f2b9869a75343c917c926b32c24add47v5.jpg"
                     }
                 ]
             },
@@ -2304,7 +2308,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/4eb73c85366bf6c5fdca06de09cf6baev5.jpg"
+                        url: "593jk7kktu2/2/4eb73c85366bf6c5fdca06de09cf6baev5.jpg"
                     }
                 ]
             },
@@ -2320,7 +2324,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/f2b9869a75343c917c926b32c24add47v5.jpg"
+                        url: "593jk7kktu2/2/f2b9869a75343c917c926b32c24add47v5.jpg"
                     }
                 ]
             },
@@ -2328,7 +2332,7 @@ export const data:ISceneData[] = [
                 "type": CategoryEnum.IMG,
                 "title": "",
                 "icon": {
-                    "ath":54.090,
+                    "ath": 54.090,
                     "atv": 9.739,
                     "edge": "center",
                     "scale": 0.5,
@@ -2336,7 +2340,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/fc9ab09d2b895f25d77cf9404198db9ev5.jpg"
+                        url: "593jk7kktu2/2/fc9ab09d2b895f25d77cf9404198db9ev5.jpg"
                     }
                 ]
             },
@@ -2352,7 +2356,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/148d013d1322a3ed202ff64baed427afv5.jpg"
+                        url: "593jk7kktu2/2/148d013d1322a3ed202ff64baed427afv5.jpg"
                     }
                 ]
             },
@@ -2368,7 +2372,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/704d8d8fbd7bc7421b45afb5295e623dv5.jpg"
+                        url: "593jk7kktu2/2/704d8d8fbd7bc7421b45afb5295e623dv5.jpg"
                     }
                 ]
             },
@@ -2377,14 +2381,14 @@ export const data:ISceneData[] = [
                 "title": "",
                 "icon": {
                     "ath": 128.603,
-                    "atv":10.243,
+                    "atv": 10.243,
                     "edge": "center",
                     "scale": 0.5,
                     "url": "assets/yuandian.png"
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2dfe58c52106387cd1d040be6ba47232v5.jpg"
+                        url: "593jk7kktu2/2/2dfe58c52106387cd1d040be6ba47232v5.jpg"
                     }
                 ]
             }
@@ -2394,7 +2398,7 @@ export const data:ISceneData[] = [
         "id": "scene17",
         "name": "27-28",
         "next": "",
-        "img":"panos/27-28.tiles/thumb.jpg",
+        "img": "panos/27-28.tiles/thumb.jpg",
         "hotspot": [
             {
                 "type": CategoryEnum.IMG,
@@ -2408,7 +2412,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/d580576717c868798ed7bd107ec08e4ev5.jpg"
+                        url: "593jk7kktu2/2/d580576717c868798ed7bd107ec08e4ev5.jpg"
                     }
                 ]
             },
@@ -2424,7 +2428,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/7e841b6fa2e3df448ace51f5db0cb536v5.jpg"
+                        url: "593jk7kktu2/2/7e841b6fa2e3df448ace51f5db0cb536v5.jpg"
                     }
                 ]
             },
@@ -2432,7 +2436,7 @@ export const data:ISceneData[] = [
                 "type": CategoryEnum.IMG,
                 "title": "",
                 "icon": {
-                    "ath":-99.970,
+                    "ath": -99.970,
                     "atv": 3.259,
                     "edge": "center",
                     "scale": 0.5,
@@ -2440,7 +2444,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/b7ca554c2f9b0b5460f65368ece36c44v5.jpg"
+                        url: "593jk7kktu2/2/b7ca554c2f9b0b5460f65368ece36c44v5.jpg"
                     }
                 ]
             },
@@ -2456,7 +2460,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/016a8b10b6d7a3e8649bdcd6c30cae38v5.jpg"
+                        url: "593jk7kktu2/2/016a8b10b6d7a3e8649bdcd6c30cae38v5.jpg"
                     }
                 ]
             },
@@ -2472,7 +2476,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/289fa885307d1c97ef2dcf8f222a8716v5.jpg"
+                        url: "593jk7kktu2/2/289fa885307d1c97ef2dcf8f222a8716v5.jpg"
                     }
                 ]
             },
@@ -2480,7 +2484,7 @@ export const data:ISceneData[] = [
                 "type": CategoryEnum.IMG,
                 "title": "",
                 "icon": {
-                    "ath":-8.428,
+                    "ath": -8.428,
                     "atv": 2.563,
                     "edge": "center",
                     "scale": 0.5,
@@ -2488,7 +2492,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/2d4e59015c940e97ffed5cc465ae9681v5.jpg"
+                        url: "593jk7kktu2/2/2d4e59015c940e97ffed5cc465ae9681v5.jpg"
                     }
                 ]
             },
@@ -2504,7 +2508,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/6cd1a5cd5ec1d40c2dec645990de17d5v5.jpg"
+                        url: "593jk7kktu2/2/6cd1a5cd5ec1d40c2dec645990de17d5v5.jpg"
                     }
                 ]
             },
@@ -2520,7 +2524,7 @@ export const data:ISceneData[] = [
                 },
                 imgs: [
                     {
-                        url:"593jk7kktu2/2/408b2c4a1bb31f095075e854e82f210dv5.jpg"
+                        url: "593jk7kktu2/2/408b2c4a1bb31f095075e854e82f210dv5.jpg"
                     }
                 ]
             }
