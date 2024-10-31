@@ -49,7 +49,7 @@ export default function Carousel(props: CarouselProps) {
   const HTML = useMemo(
     () =>
       article?.html.replace(/(src=")[^"]*?(")/g, (match, capture) => {
-        let srcValue = match.substring(capture.length, match.length - 1);
+        const srcValue = match.substring(capture.length, match.length - 1);
         return `${capture}${loadAssets(srcValue)}"`;
       }),
     [article?.html]
