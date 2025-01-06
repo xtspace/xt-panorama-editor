@@ -52,11 +52,16 @@ pnpm start
   + **全景音乐**：在场景中加入全景音效，创造沉浸式的听觉体验，让用户在浏览时感受到更真实的环境氛围
   + **热点音乐支持**：根据不同的热点区域播放特定音乐，增强交互感受。例如，用户接近特定事件或信息点时，自动触发相关的音乐或音效，提升用户的参与感和互动体验。
 
+### Docker部署
+如果您希望将全景编辑器部署到您的服务器上并进行定制化开发，提供 **Docker版本** 的有偿使用。
+
+- **优势**：提供更高的性能、灵活性、私有化部署等优势，适合大规模商业项目和企业用户。
+- **价格**：请联系我们了解具体的价格和服务内容。
+
 ### 页面展示
 <img width="1053" alt="image" src="https://github.com/user-attachments/assets/aacfc0d6-7b07-4967-af8f-2849f6589d3c">
 <img width="1053" alt="image" src="https://github.com/user-attachments/assets/39e9c89a-70c6-482b-ab45-754c4920cd08">
 <img width="1439" alt="image" src="https://github.com/user-attachments/assets/46e66cb0-a0b2-4da1-a36d-7006e408f7b7">
-
 
 
 ### 联系方式
