@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "target": "ES2020",
+    "target": "ESNext",
+    "baseUrl": ".",
     "useDefineForClassFields": true,
     "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
+      "ESNext",
+      "DOM"
+    ],
+    "types": [
+      "vite/client",
+      "@uiw/react-amap-types"
     ],
     "module": "ESNext",
     "skipLibCheck": true,
@@ -17,14 +20,47 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "allowUnusedLabels": true,
     "paths": {
-      "@/*": [
+      "@": [
         "src/*"
+      ],
+      "@/api/*": [
+        "src/api/*"
+      ],
+      "@/mock/*": [
+        "src/mock/*"
+      ],
+      "@/types/*": [
+        "src/types/*"
+      ],
+      "@/pages/*": [
+        "src/pages/*"
+      ],
+      "@/assets/*": [
+        "src/assets/*"
+      ],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/utils/*": [
+        "src/utils/*"
+      ],
+      "@/layout": [
+        "src/layout"
+      ],
+      "@/enum/*": [
+        "src/enum/*"
+      ],
+      "@/generator/*": [
+        "src/generator/*"
+      ],
+      "@/hooks/*": [
+        "src/hooks/*"
       ]
     }
   },

@@ -1,15 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { resolve } from "path";
 import UnoCSS from 'unocss/vite'
 import fixReactVirtualized from "esbuild-plugin-react-virtualized";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 
 export default defineConfig({
   base: 'https://xtspace.cc:8310/',
   plugins: [
     react(),
-    UnoCSS()
+    UnoCSS(),
+    tsconfigPaths()
   ],
   server: {
     open: true,
@@ -24,20 +25,6 @@ export default defineConfig({
         target: "http://192.168.0.2:8042",
         changeOrigin: true,
       },
-    },
-  },
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "src"),
-      "@mock": resolve(__dirname, "src/mock"),
-      "@types": resolve(__dirname, "src/types"),
-      "@pages": resolve(__dirname, "src/pages"),
-      "@assets": resolve(__dirname, "src/assets"),
-      "@components": resolve(__dirname, "src/components"),
-      "@utils": resolve(__dirname, "src/utils"),
-      "@layout": resolve(__dirname, "src/layout"),
-      "@enum": resolve(__dirname, "src/enum"),
-      "@generator": resolve(__dirname, "src/generator")
     },
   },
   css: {
