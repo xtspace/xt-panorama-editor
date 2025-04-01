@@ -3,6 +3,7 @@ import react from '@vitejs/plugin-react'
 import UnoCSS from 'unocss/vite'
 import fixReactVirtualized from "esbuild-plugin-react-virtualized";
 import tsconfigPaths from "vite-tsconfig-paths";
+import ssl from "@vitejs/plugin-basic-ssl";
 
 
 export default defineConfig({
@@ -10,7 +11,8 @@ export default defineConfig({
   plugins: [
     react(),
     UnoCSS(),
-    tsconfigPaths()
+    tsconfigPaths(),
+    ssl()
   ],
   server: {
     open: true,
