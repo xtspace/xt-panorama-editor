@@ -9,7 +9,7 @@ import MediaAudio from '@/pages/media-audio'
 import Login from "@/pages/login";
 import UserManagement from "@/pages/user-management";
 import { getStorage } from '@/utils/storage';
-import KeepAlive from 'react-activation';
+import { KeepAlive } from 'react-activation';
 import { NotFound } from "@/pages/404";
 
 

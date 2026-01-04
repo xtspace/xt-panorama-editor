@@ -2,32 +2,32 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import UnoCSS from 'unocss/vite'
 import fixReactVirtualized from "esbuild-plugin-react-virtualized";
-import tsconfigPaths from "vite-tsconfig-paths";
-import ssl from "@vitejs/plugin-basic-ssl";
 
 
 export default defineConfig({
   base: 'https://xtspace.cc:8310/',
   plugins: [
     react(),
-    UnoCSS(),
-    tsconfigPaths(),
-    ssl()
+    UnoCSS()
   ],
   server: {
     open: true,
     host: "0.0.0.0",
     proxy: {
       "/api": {
-        target: "http://192.168.0.2:8042",
+        target: "https://hzxtkj.cn:8310/api",
         changeOrigin: true,
         rewrite: (path: string) => path.replace(/^\/api/, ""),
       },
       "/file": {
-        target: "http://192.168.0.2:8042",
+        target: "https://hzxtkj.cn:8310/file",
         changeOrigin: true,
+        rewrite: (path: string) => path.replace(/^\/file/, ""),
       },
     },
+  },
+  resolve: {
+    tsconfigPaths: true
   },
   css: {
     preprocessorOptions: {
@@ -50,7 +50,7 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    esbuildOptions: {
+    rolldownOptions: {
       plugins: [fixReactVirtualized]
     }
   }
